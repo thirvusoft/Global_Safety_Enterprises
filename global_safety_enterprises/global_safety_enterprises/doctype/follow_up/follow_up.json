@@ -1,0 +1,85 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-17 15:33:08.091132",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "followed_by",
+  "next_follow_up_date",
+  "next_follow_up_by",
+  "column_break_stbi",
+  "status",
+  "mode_of_communication",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "followed_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Followed By",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "next_follow_up_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Next Follow up Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "next_follow_up_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Next Follow up By",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nOpen\nReplied\nOpportunity Open\nOpportunity Closed\nQuotation - Created\nDo Not Disturb"
+  },
+  {
+   "fieldname": "mode_of_communication",
+   "fieldtype": "Link",
+   "label": "Mode of Communication",
+   "options": "Mode of Communication"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "column_break_stbi",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-17 16:36:06.847131",
+ "modified_by": "Administrator",
+ "module": "Global Safety Enterprises",
+ "name": "Follow-Up",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
