@@ -31,8 +31,10 @@ app_license = "mit"
 doctype_js = {"Lead" : "/global_safety_enterprises/utils/js/lead.js",
             "Opportunity": "/global_safety_enterprises/utils/js/opportunity.js",
             "Customer": "/global_safety_enterprises/utils/js/customer.js",
-            "Item": "/global_safety_enterprises/utils/js/item.js"}
-}
+            "Item": "/global_safety_enterprises/utils/js/item.js",
+            'Quotation':"/global_safety_enterprises/utils/js/quotation.js"
+            }
+
 doctype_list_js = {"Opportunity" : "/global_safety_enterprises/utils/js/opportunity_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
