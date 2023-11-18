@@ -35,7 +35,8 @@ doctype_js = {"Lead" : "/global_safety_enterprises/utils/js/lead.js",
             'Quotation':"/global_safety_enterprises/utils/js/quotation.js"
             }
 
-doctype_list_js = {"Opportunity" : "/global_safety_enterprises/utils/js/opportunity_list.js"}
+doctype_list_js = {"Opportunity" : "/global_safety_enterprises/utils/js/opportunity_list.js",
+                   "Lead": "/global_safety_enterprises/utils/js/lead_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
