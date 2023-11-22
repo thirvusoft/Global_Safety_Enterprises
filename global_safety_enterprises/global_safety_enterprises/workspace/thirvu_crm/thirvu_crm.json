@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Thirvu CRM",
  "links": [],
- "modified": "2023-11-18 12:43:23.609892",
+ "modified": "2023-11-22 18:12:32.241116",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Thirvu CRM",
@@ -22,7 +22,17 @@
  "parent_page": "",
  "public": 1,
  "quick_lists": [],
- "roles": [],
+ "roles": [
+  {
+   "role": "Thirvu CRM"
+  },
+  {
+   "role": "Thirvu Admin"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
  "sequence_id": 23.0,
  "shortcuts": [
   {
