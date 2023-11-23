@@ -9,7 +9,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letterhead": null,
- "modified": "2023-11-23 11:51:55.442032",
+ "modified": "2023-11-23 12:27:44.679543",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Missed Follow Ups",
@@ -21,6 +21,12 @@
  "roles": [
   {
    "role": "System Manager"
+  },
+  {
+   "role": "Thirvu Admin"
+  },
+  {
+   "role": "Thirvu CRM"
   }
  ]
 }
