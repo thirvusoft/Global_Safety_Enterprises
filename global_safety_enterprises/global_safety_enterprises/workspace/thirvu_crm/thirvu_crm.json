@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"P_jqCccRCL\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Thirvu CRM</span>\",\"col\":12}},{\"id\":\"Ae4gMiNQh7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lead\",\"col\":3}},{\"id\":\"AGincXS4sk\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opportunity\",\"col\":3}},{\"id\":\"5qm8o8YvPb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer\",\"col\":3}},{\"id\":\"uFdEuub8Tk\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Quotation\",\"col\":3}},{\"id\":\"LgbAbxLX6P\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Today's Follow Ups\",\"col\":3}},{\"id\":\"BM8FwJL5ko\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Daily Follow Up Status\",\"col\":3}},{\"id\":\"1VUvL_GYZp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Missed Follow Ups\",\"col\":3}},{\"id\":\"FxKgp_u7qx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lead Convertion Ratio\",\"col\":3}}]",
+ "content": "[{\"id\":\"P_jqCccRCL\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Thirvu CRM</span>\",\"col\":12}},{\"id\":\"Ae4gMiNQh7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lead\",\"col\":3}},{\"id\":\"AGincXS4sk\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opportunity\",\"col\":3}},{\"id\":\"5qm8o8YvPb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer\",\"col\":3}},{\"id\":\"uFdEuub8Tk\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Quotation\",\"col\":3}},{\"id\":\"0G7funp8MN\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"LgbAbxLX6P\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Today's Follow Ups\",\"col\":3}},{\"id\":\"BM8FwJL5ko\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Daily Follow Up Status\",\"col\":3}},{\"id\":\"1VUvL_GYZp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Missed Follow Ups\",\"col\":3}},{\"id\":\"FxKgp_u7qx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lead Convertion Ratio\",\"col\":3}}]",
  "creation": "2023-11-18 12:05:07.861674",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Thirvu CRM",
  "links": [],
- "modified": "2023-11-23 12:25:10.000947",
+ "modified": "2023-11-24 11:57:45.048405",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Thirvu CRM",
