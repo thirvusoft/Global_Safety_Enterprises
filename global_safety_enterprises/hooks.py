@@ -11,7 +11,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/global_safety_enterprises/css/global_safety_enterprises.css"
-# app_include_js = "/assets/global_safety_enterprises/js/global_safety_enterprises.js"
+app_include_js = "assets/global_safety_enterprises/js/desk.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/global_safety_enterprises/css/global_safety_enterprises.css"
@@ -131,6 +131,12 @@ override_doctype_class = {
 # Hook on document methods and events
 
 doc_events = {
+	"Opportunity": {
+		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.opportunity.update_status"
+	},
+    "Quotation": {
+		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.update_status"
+	},
 	"Address": {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.address.address_tax_validation"
 	}
@@ -139,10 +145,10 @@ doc_events = {
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-#	"all": [
-#		"global_safety_enterprises.tasks.all"
-#	],
+scheduler_events = {
+    "all": [
+        "global_safety_enterprises.global_safety_enterprises.utils.py.location.get_current_location"
+	],
 #	"daily": [
 #		"global_safety_enterprises.tasks.daily"
 #	],
@@ -155,7 +161,7 @@ doc_events = {
 #	"monthly": [
 #		"global_safety_enterprises.tasks.monthly"
 #	],
-# }
+}
 
 # Testing
 # -------

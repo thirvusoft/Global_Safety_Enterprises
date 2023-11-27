@@ -2,6 +2,15 @@ import frappe
 from erpnext.setup.utils import get_exchange_rate
 from frappe.model.mapper import get_mapped_doc
 
+def update_status(self,event):
+    if self.party_name and self.opportunity_from == 'Lead':
+        if self.status == 'Open':
+            lead = frappe.get_doc('Lead',self.party_name)
+            lead.db_set("status", 'Opportunity Created')
+        elif self.status == 'Closed':
+            lead = frappe.get_doc('Lead',self.party_name)
+            lead.db_set("status", 'Opportunity Closed')
+
 @frappe.whitelist()
 def get_lead_addresses(lead_name):
 	address=frappe.get_all(
