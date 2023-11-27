@@ -131,6 +131,12 @@ override_doctype_class = {
 # Hook on document methods and events
 
 doc_events = {
+	"Opportunity": {
+		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.opportunity.update_status"
+	},
+    "Quotation": {
+		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.update_status"
+	},
 	"Address": {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.address.address_tax_validation"
 	}
