@@ -120,9 +120,9 @@ doctype_list_js = {"Opportunity" : "/global_safety_enterprises/utils/js/opportun
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-#	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	"Lead": "global_safety_enterprises.global_safety_enterprises.utils.py.lead.CustomLead"
+}
 
 # Document Events
 # ---------------
