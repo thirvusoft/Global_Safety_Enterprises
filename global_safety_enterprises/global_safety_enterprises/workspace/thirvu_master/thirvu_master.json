@@ -1,0 +1,120 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"pjLWBKfCIc\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Thirvu Master</span>\",\"col\":12}},{\"id\":\"M2zVEFIbIh\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User\",\"col\":3}},{\"id\":\"b0TOefz8P0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item\",\"col\":3}},{\"id\":\"M6fBtdtfHb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item Group\",\"col\":3}},{\"id\":\"7sybf_5-iW\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item Price\",\"col\":3}},{\"id\":\"LoRPtSPpYj\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Group\",\"col\":3}},{\"id\":\"KkQBFW1ISH\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Territory\",\"col\":3}},{\"id\":\"uUSLaYbrDf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Terms and Conditions\",\"col\":3}},{\"id\":\"fEQercUCzo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payment Terms Template\",\"col\":3}},{\"id\":\"hADwtHkrME\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"QpS-EdVzMF\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Dashboard</b></span>\",\"col\":12}},{\"id\":\"fChCHFmzDt\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today New Lead\",\"col\":4}},{\"id\":\"7p3v8uAL_G\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today New Quotation\",\"col\":4}},{\"id\":\"MsEcV6Uk24\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Quotation Ordered Status\",\"col\":4}},{\"id\":\"o1YFKCw1-0\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today Lost Quotation\",\"col\":4}}]",
+ "creation": "2023-11-18 12:10:16.581582",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "onboarding",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Thirvu Master",
+ "links": [],
+ "modified": "2023-11-23 14:38:39.057521",
+ "modified_by": "Administrator",
+ "module": "Global Safety Enterprises",
+ "name": "Thirvu Master",
+ "number_cards": [
+  {
+   "label": "Quotation Ordered Status",
+   "number_card_name": "Quotation Ordered Status"
+  },
+  {
+   "label": "Today New Lead",
+   "number_card_name": "Today New Lead"
+  },
+  {
+   "label": "Today Lost Quotation",
+   "number_card_name": "Today Lost Quotation"
+  },
+  {
+   "label": "Today New Quotation",
+   "number_card_name": "Today New Quotation"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "Thirvu Admin"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "sequence_id": 24.0,
+ "shortcuts": [
+  {
+   "color": "Pink",
+   "doc_view": "List",
+   "format": "{}",
+   "label": "Item",
+   "link_to": "Item",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "Tree",
+   "label": "Territory",
+   "link_to": "Territory",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Item Price",
+   "link_to": "Item Price",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Orange",
+   "doc_view": "List",
+   "format": "{}",
+   "label": "User",
+   "link_to": "User",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Terms and Conditions",
+   "link_to": "Terms and Conditions",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Payment Terms Template",
+   "link_to": "Payment Terms Template",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Item Group",
+   "link_to": "Item Group",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Customer Group",
+   "link_to": "Customer Group",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Thirvu Master"
+}

@@ -1,0 +1,104 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"P_jqCccRCL\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Thirvu CRM</span>\",\"col\":12}},{\"id\":\"Ae4gMiNQh7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lead\",\"col\":3}},{\"id\":\"AGincXS4sk\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Opportunity\",\"col\":3}},{\"id\":\"5qm8o8YvPb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer\",\"col\":3}},{\"id\":\"uFdEuub8Tk\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Quotation\",\"col\":3}},{\"id\":\"0G7funp8MN\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"LgbAbxLX6P\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Today's Follow Ups\",\"col\":3}},{\"id\":\"BM8FwJL5ko\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Daily Follow Up Status\",\"col\":3}},{\"id\":\"1VUvL_GYZp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Missed Follow Ups\",\"col\":3}},{\"id\":\"FxKgp_u7qx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Lead Convertion Ratio\",\"col\":3}}]",
+ "creation": "2023-11-18 12:05:07.861674",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "crm",
+ "idx": 0,
+ "indicator_color": "green",
+ "is_hidden": 0,
+ "label": "Thirvu CRM",
+ "links": [],
+ "modified": "2023-11-24 11:57:45.048405",
+ "modified_by": "Administrator",
+ "module": "Global Safety Enterprises",
+ "name": "Thirvu CRM",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "Thirvu CRM"
+  },
+  {
+   "role": "Thirvu Admin"
+  },
+  {
+   "role": "System Manager"
+  }
+ ],
+ "sequence_id": 23.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Missed Follow Ups",
+   "link_to": "Missed Follow Ups",
+   "type": "Report"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "format": "{}",
+   "label": "Lead",
+   "link_to": "Lead",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Daily Follow Up Status",
+   "link_to": "Daily Follow Up Status",
+   "type": "Report"
+  },
+  {
+   "color": "Cyan",
+   "doc_view": "List",
+   "format": "{}",
+   "label": "Customer",
+   "link_to": "Customer",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Pink",
+   "doc_view": "List",
+   "format": "{}",
+   "label": "Opportunity",
+   "link_to": "Opportunity",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Green",
+   "doc_view": "List",
+   "format": "{}",
+   "label": "Quotation",
+   "link_to": "Quotation",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Lead Convertion Ratio",
+   "link_to": "Lead Convertion Ratio",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Today's Follow Ups",
+   "link_to": "Today's Follow Ups",
+   "type": "Report"
+  }
+ ],
+ "title": "Thirvu CRM"
+}
