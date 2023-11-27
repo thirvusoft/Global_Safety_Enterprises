@@ -7,5 +7,22 @@ frappe.ui.form.on("Lead", {
             frm.remove_custom_button("Add to Prospect", "Action");
             $("[data-doctype='Prospect']").hide();
 		},100)
-    }
+    },
+	status:function(frm){
+		if(cur_frm.doc.status == 'Replied'){
+			if( !cur_frm.doc.custom_view_follow_up_details_copy || cur_frm.doc.custom_view_follow_up_details_copy.length < 1){
+				frappe.show_alert('Minimum 1 row should be filled in Follow Up Table')
+				frappe.db.get_value("Lead", {"name": cur_frm.doc.name}, "status", (r) => {
+					cur_frm.set_value('status',r.status)
+				});			}
+		}
+		else if(['Opportunity Closed','Opportunity Open','Quotation Created'].includes(cur_frm.doc.status)){
+
+			frappe.show_alert({message:__(`Not allowed to set ${frm.doc.status}-Status Manually`), indicator:'red'});
+			frappe.db.get_value("Lead", {"name": cur_frm.doc.name}, "status", (r) => {
+				cur_frm.set_value('status',r.status)
+			});
+
+		}
+	}
 })
