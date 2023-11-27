@@ -70,5 +70,20 @@ frappe.ui.form.on("Opportunity", {
                 }
             });
         });
-    }}
+    }},
+
+	status: function(frm){
+
+		if (frm.doc.status == "Quotation Created"){
+
+			frappe.show_alert(
+				{
+					message: "Not Allowed You To Set " + frm.doc.status + " - Status Manually.",
+					indicator: 'red'
+				}
+			);
+
+			frm.set_value("status", "")
+		}
+	}
 });
