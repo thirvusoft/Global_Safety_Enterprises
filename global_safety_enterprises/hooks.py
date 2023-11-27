@@ -11,7 +11,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/global_safety_enterprises/css/global_safety_enterprises.css"
-# app_include_js = "/assets/global_safety_enterprises/js/global_safety_enterprises.js"
+app_include_js = "assets/global_safety_enterprises/js/desk.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/global_safety_enterprises/css/global_safety_enterprises.css"
@@ -139,10 +139,10 @@ doc_events = {
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-#	"all": [
-#		"global_safety_enterprises.tasks.all"
-#	],
+scheduler_events = {
+    "all": [
+        "global_safety_enterprises.global_safety_enterprises.utils.py.location.get_current_location"
+	],
 #	"daily": [
 #		"global_safety_enterprises.tasks.daily"
 #	],
@@ -155,7 +155,7 @@ doc_events = {
 #	"monthly": [
 #		"global_safety_enterprises.tasks.monthly"
 #	],
-# }
+}
 
 # Testing
 # -------
