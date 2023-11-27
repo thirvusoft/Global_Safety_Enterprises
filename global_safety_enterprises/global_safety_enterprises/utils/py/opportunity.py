@@ -36,13 +36,14 @@ def create_customer(lead_name,customer,type,group,tax,opportunity_name):
         ],
         pluck="name",
     )
+
     cus_new =frappe.new_doc("Customer")
     cus_new.customer_name = customer
     cus_new.customer_type = type
     cus_new.customer_group = group
     cus_new.tax_category = tax
-    cus_new.customer_primary_address = address[0]
-    cus_new.customer_primary_contact = contact[0]
+    cus_new.customer_primary_address = address[0] if address else ""
+    cus_new.customer_primary_contact =contact[0] if contact else ""
     cus_new.opportunity_name = opportunity_name
     cus_new.lead_name = lead_name
 
