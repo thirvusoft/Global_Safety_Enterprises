@@ -130,13 +130,14 @@ override_doctype_class = {
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Opportunity": {
+		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.opportunity.update_status"
+	},
+    "Quotation": {
+		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.update_status"
+	},
+}
 
 # Scheduled Tasks
 # ---------------

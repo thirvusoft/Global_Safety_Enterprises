@@ -1,6 +1,9 @@
+{% include "india_compliance/gst_india/client_scripts/party.js" %}
+
 frappe.ui.form.on("Lead", {
 
     refresh: function(frm){
+        india_compliance.set_state_options(frm);
 
 		setTimeout(()=>{
 
@@ -33,7 +36,7 @@ frappe.ui.form.on("Lead", {
 		}
 		else if(['Opportunity Closed','Opportunity Open','Quotation Created'].includes(cur_frm.doc.status)){
 
-			frappe.show_alert({message:__(`Not allowed to set ${frm.doc.status}-Status Manually`), indicator:'red'});
+			frappe.show_alert({message:__(`Not Allowed You To Set ${frm.doc.status} - Status Manually.`), indicator:'red'});
 			frappe.db.get_value("Lead", {"name": cur_frm.doc.name}, "status", (r) => {
 				cur_frm.set_value('status',r.status)
 			});
