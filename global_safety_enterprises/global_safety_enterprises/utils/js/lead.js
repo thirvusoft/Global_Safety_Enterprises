@@ -1,8 +1,7 @@
 {% include "india_compliance/gst_india/client_scripts/party.js" %}
 
 frappe.ui.form.on("Lead", {
-
-    refresh: function(frm){
+    refresh: async function(frm){
         india_compliance.set_state_options(frm);
 
 		setTimeout(()=>{
@@ -17,14 +16,23 @@ frappe.ui.form.on("Lead", {
 
 		},100)
 
-		frm.add_custom_button(__('<p style="color: #171717; padding-top:8px;padding-left:10px;padding-right:10px;"><b>Create Opportunity</b></p>'), () => {
+		var opp_value = await frappe.db.get_list("Opportunity",
+			{
+				filters:{party_name: cur_frm.doc.name}
+			}
+		)
 
-			frappe.model.open_mapped_doc({
-				method: "erpnext.crm.doctype.lead.lead.make_opportunity",
-				frm: frm
+		if (!frm.doc.__islocal && opp_value.length == 0){
+			
+			frm.add_custom_button(__('<p style="color: #171717; padding-top:8px;padding-left:10px;padding-right:10px;"><b>Create Opportunity</b></p>'), () => {
+
+				frappe.model.open_mapped_doc({
+					method: "erpnext.crm.doctype.lead.lead.make_opportunity",
+					frm: frm
+				});
+			
 			});
-		 
-		});
+		}
     },
 	status:function(frm){
 		if(cur_frm.doc.status == 'Replied'){
