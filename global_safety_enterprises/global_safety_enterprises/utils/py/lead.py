@@ -1,6 +1,10 @@
 import frappe
 from erpnext.crm.doctype.lead.lead import Lead
-
+from frappe import _
+def validate_replied(doc,event):
+    if doc.status == 'Replied' and not doc.custom_view_follow_up_details_copy:
+        frappe.msgprint('Minimum 1 row should be filled in Follow Up Table', raise_exception=1,indicator="red", title=_("Warning - Replied Status"))
+        
 class CustomLead(Lead):
     def before_insert(self):
         self.contact_doc = None

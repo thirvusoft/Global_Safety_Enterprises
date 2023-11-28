@@ -11,7 +11,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/global_safety_enterprises/css/global_safety_enterprises.css"
-# app_include_js = "/assets/global_safety_enterprises/js/global_safety_enterprises.js"
+app_include_js = "assets/global_safety_enterprises/js/desk.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/global_safety_enterprises/css/global_safety_enterprises.css"
@@ -123,7 +123,9 @@ doctype_list_js = {"Opportunity" : "/global_safety_enterprises/utils/js/opportun
 # Override standard doctype classes
 
 override_doctype_class = {
-	"Lead": "global_safety_enterprises.global_safety_enterprises.utils.py.lead.CustomLead"
+	"Lead": "global_safety_enterprises.global_safety_enterprises.utils.py.lead.CustomLead",
+	'Opportunity':"global_safety_enterprises.global_safety_enterprises.utils.py.opportunity.CustomOpportunity",
+	'Quotation':"global_safety_enterprises.global_safety_enterprises.utils.py.quotation.CustomQuotation"
 }
 
 # Document Events
@@ -139,16 +141,19 @@ doc_events = {
 	},
 	"Address": {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.address.address_tax_validation"
+	},
+	'Lead':{
+		'validate':"global_safety_enterprises.global_safety_enterprises.utils.py.lead.validate_replied"
 	}
 }
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-#	"all": [
-#		"global_safety_enterprises.tasks.all"
-#	],
+scheduler_events = {
+    "all": [
+        "global_safety_enterprises.global_safety_enterprises.utils.py.location.get_current_location"
+	],
 #	"daily": [
 #		"global_safety_enterprises.tasks.daily"
 #	],
@@ -161,7 +166,7 @@ doc_events = {
 #	"monthly": [
 #		"global_safety_enterprises.tasks.monthly"
 #	],
-# }
+}
 
 # Testing
 # -------
