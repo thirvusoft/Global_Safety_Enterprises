@@ -19,30 +19,30 @@ def get_columns(filters):
 			'fieldname': 'name',
 			'fieldtype': 'Data',
 			'label': 'Lead / Quotation ID',
-			'width': 182
+			'width': 195
 		},
 
 		{
 			'fieldname': 'lead_name',
 			'fieldtype': 'Data',
-			'label': 'Lead Name',
-			'width': 182
+			'label': 'Lead / Quotation Name',
+			'width': 195
 		},
 
 		{
 			'fieldname': 'lead_owner',
 			'fieldtype': 'Data',
-			'label': 'Lead Owner',
-			'width': 182
+			'label': 'Lead / Quotation Owner',
+			'width': 195
 		},
 
-		{
-			'fieldname': 'territory',
-			'fieldtype': 'Link',
-			'label': 'Territory',
-			'options': 'Territory',
-			'width': 182
-		},
+		# {
+		# 	'fieldname': 'territory',
+		# 	'fieldtype': 'Link',
+		# 	'label': 'Territory',
+		# 	'options': 'Territory',
+		# 	'width': 182
+		# },
 
 		{
 			'fieldname': 'status',
