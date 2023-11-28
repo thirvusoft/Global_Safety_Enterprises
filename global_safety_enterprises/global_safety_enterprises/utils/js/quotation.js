@@ -53,27 +53,27 @@ frappe.ui.form.on("Quotation", {
 			<tr style="border:1px solid black; padding:5px;">
 				<td style="border:1px solid black; padding:5px;">
 				<center>
-					${row.idx}
+					${row.idx || ""}
 				</center>
 				</td>
 				<td style="border:1px solid black; padding:5px;">
 				<center>
-					${row.date}
+					${row.date || ""}
 				</center>
 				</td>
 				<td style="border:1px solid black; padding:5px;">
 				<center>
-					${row.mode_of_communication}
+					${row.mode_of_communication || ""}
 				</center>
 				</td>
 				<td style="border:1px solid black; padding:5px;">
 				<center>
-					${row.followed_by}
+					${row.followed_by || ""}
 				</center>
 				</td>
 				<td style="border:1px solid black; padding:5px;">
 				<center>
-					${row.description}
+					${row.description || ""}
 				</center>
 				</td>
 			</tr>
