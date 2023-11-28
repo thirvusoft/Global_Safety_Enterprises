@@ -18,7 +18,7 @@ def get_lead_addresses(lead_name):
         return address
 
 @frappe.whitelist()
-def create_customer(lead_name,customer,type,group,tax,opportunity_name):
+def create_customer(lead_name,customer,type,tax,opportunity_name,group=None):
     address=frappe.get_all(
             "Address",
             filters=[
