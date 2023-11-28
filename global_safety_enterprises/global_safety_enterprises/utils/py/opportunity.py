@@ -47,24 +47,25 @@ def get_lead_addresses(lead_name):
         return address
 
 @frappe.whitelist()
-def create_customer(lead_name,customer,type,group,tax,opportunity_name):
-    address=frappe.get_all(
-            "Address",
-            filters=[
-            ["Dynamic Link", "link_doctype", "=", 'Lead'],
-            ["Dynamic Link", "link_name", "=", lead_name],
-            ["disabled", "=", 0],
-            ],
-            pluck="name",
-        )
-    contact=frappe.get_all(
-        "Contact",
-        filters=[
-        ["Dynamic Link", "link_doctype", "=", 'Lead'],
-        ["Dynamic Link", "link_name", "=", lead_name],
-        ],
-        pluck="name",
-    )
+
+def create_customer(lead_name,customer,type,tax,opportunity_name,group = None):
+	address=frappe.get_all(
+			"Address",
+			filters=[
+			["Dynamic Link", "link_doctype", "=", 'Lead'],
+			["Dynamic Link", "link_name", "=", lead_name],
+			["disabled", "=", 0],
+			],
+			pluck="name",
+		)
+	contact=frappe.get_all(
+		"Contact",
+		filters=[
+		["Dynamic Link", "link_doctype", "=", 'Lead'],
+		["Dynamic Link", "link_name", "=", lead_name],
+		],
+		pluck="name",
+	)
 
     cus_new =frappe.new_doc("Customer")
     cus_new.customer_name = customer
@@ -141,4 +142,8 @@ def make_quotation(source_name, target_doc=None):
 
     doclist.run_method("set_missing_values")
 
+<<<<<<< HEAD
     return doclist
+=======
+	return doclist
+>>>>>>> b859f93ad9efddebffed6d96b7a0f22f8eb6c00c

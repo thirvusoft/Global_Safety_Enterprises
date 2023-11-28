@@ -42,5 +42,83 @@ frappe.ui.form.on("Lead", {
 			});
 
 		}
+	},
+	
+	custom_view_follow_up_details: function(frm){
+		let data=`<table style="font-size:14px; border:1px solid black;width:100%">
+
+			<tr style="font-weight:bold; border:1px solid black; padding:5px;">
+				<td style="border:1px solid black; padding:5px;">
+				<center>
+				    S.No
+				</center>
+				</td>
+				<td style="border:1px solid black; padding:5px;">
+				<center>
+					Date
+				</center>
+				</td>
+				<td style="border:1px solid black; padding:5px;">
+				<center>
+					Mode of Communication
+				</center>
+				</td>
+				<td style="border:1px solid black; padding:5px;">
+				<center>
+					Followed By
+				</center>
+				</td>
+				<td style="border:1px solid black; padding:5px;">
+				<center>
+					Description
+				</center>
+				</td>
+			</tr>
+		`
+		frm.doc.custom_view_follow_up_details_copy.forEach(row => {
+			data += `
+			<tr style="border:1px solid black; padding:5px;">
+				<td style="border:1px solid black; padding:5px;">
+				<center>
+					${row.idx}
+				</center>
+				</td>
+				<td style="border:1px solid black; padding:5px;">
+				<center>
+					${row.date}
+				</center>
+				</td>
+				<td style="border:1px solid black; padding:5px;">
+				<center>
+					${row.mode_of_communication}
+				</center>
+				</td>
+				<td style="border:1px solid black; padding:5px;">
+				<center>
+					${row.followed_by}
+				</center>
+				</td>
+				<td style="border:1px solid black; padding:5px;">
+				<center>
+					${row.description}
+				</center>
+				</td>
+			</tr>
+			`
+		})
+		data += `</table>`
+		var d = new frappe.ui.Dialog({
+			title: __("Follow Up Details"),
+			size:"extra-large",
+			fields : [
+				{
+					fieldname: 'html_data',
+					fieldtype: "HTML"
+				}
+			]
+			
+		})
+		d.show();
+		$(d.get_field('html_data').wrapper).html(data) 
 	}
 })
