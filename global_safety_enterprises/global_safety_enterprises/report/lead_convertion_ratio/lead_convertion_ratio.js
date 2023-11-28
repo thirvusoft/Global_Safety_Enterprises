@@ -23,7 +23,7 @@ frappe.query_reports["Lead Convertion Ratio"] = {
 			fieldname: 'type',
 			label: 'Type',
 			fieldtype: 'Select',
-			options: '\nLead\nQuotation',
+			options: 'Lead\nQuotation',
 			reqd: 1
 		},
 	]
