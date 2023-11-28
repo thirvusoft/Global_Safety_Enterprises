@@ -154,6 +154,7 @@ def get_data(filters):
 				lead.lead_owner as owner,
 				lead.status as status,
 				lead.mobile_no as contact_number,
+				lead.custom_remarks as remarks,
 				(
 					SELECT follow.description
 					FROM `tabFollow-Up` AS follow
