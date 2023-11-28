@@ -123,7 +123,9 @@ doctype_list_js = {"Opportunity" : "/global_safety_enterprises/utils/js/opportun
 # Override standard doctype classes
 
 override_doctype_class = {
-	"Lead": "global_safety_enterprises.global_safety_enterprises.utils.py.lead.CustomLead"
+	"Lead": "global_safety_enterprises.global_safety_enterprises.utils.py.lead.CustomLead",
+	'Opportunity':"global_safety_enterprises.global_safety_enterprises.utils.py.opportunity.CustomOpportunity",
+	'Quotation':"global_safety_enterprises.global_safety_enterprises.utils.py.quotation.CustomQuotation"
 }
 
 # Document Events
@@ -139,6 +141,9 @@ doc_events = {
 	},
 	"Address": {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.address.address_tax_validation"
+	},
+	'Lead':{
+		'validate':"global_safety_enterprises.global_safety_enterprises.utils.py.lead.validate_replied"
 	}
 }
 
