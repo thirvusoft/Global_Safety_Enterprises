@@ -114,6 +114,8 @@ def get_data(filters):
 					filters=[
 					["Dynamic Link", "link_doctype", "=", 'Lead'],
 					["Dynamic Link", "link_name", "=", i['name']],
+					["Contact Phone", 'is_primary_mobile_no',1]
+
 					],
 					fields=['`tabContact Phone`.phone'],
 					order_by='`tabContact`.creation desc'
@@ -160,6 +162,8 @@ def get_data(filters):
 					filters=[
 					["Dynamic Link", "link_doctype", "=", 'Quotation'],
 					["Dynamic Link", "link_name", "=", i['name']],
+					["Contact Phone", 'is_primary_mobile_no',1]
+
 					],
 					fields=['`tabContact Phone`.phone'],
 					order_by='`tabContact`.creation desc'
