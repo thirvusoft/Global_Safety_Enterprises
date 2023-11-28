@@ -87,21 +87,21 @@ def get_columns(filters):
 			'fieldtype': 'Dynamic Link',
 			'label': f'{filters.get("type")} ID',
 			'options':'doctype',
-			'width': 182
+			'width': 200
 		},
 
 		{
 			'fieldname': 'name',
 			'fieldtype': 'Data',
 			'label': f'{filters.get("type")} Name',
-			'width': 182
+			'width': 200
 		},
 
 		{
 			'fieldname': 'owner',
 			'fieldtype': 'Data',
 			'label': f'{filters.get("type")} Owner',
-			'width': 182
+			'width': 200
 		},
 
 		{
@@ -109,7 +109,8 @@ def get_columns(filters):
 			'fieldtype': 'Link',
 			'label': 'Territory',
 			'options': 'Territory',
-			'width': 182
+			'width': 182,
+			'hidden':1
 		},
 
 		{
@@ -153,7 +154,6 @@ def get_data(filters):
 				lead.lead_name as name,
 				lead.lead_owner as owner,
 				lead.status as status,
-				lead.mobile_no as contact_number,
 				lead.custom_remarks as remarks,
 				(
 					SELECT follow.description
@@ -161,11 +161,20 @@ def get_data(filters):
 					WHERE follow.parent = lead.name
 					ORDER BY follow.idx DESC
 					LIMIT 1
-				) AS description
+				) AS description,
+				(
+					SELECT contact.mobile_no
+					FROM `tabContact` AS contact
+					INNER JOIN `tabDynamic Link` AS dynamiclink ON contact.name = dynamiclink.parent
+					WHERE dynamiclink.link_name = lead.name
+					AND dynamiclink.link_doctype = 'Lead'
+					ORDER BY contact.creation DESC
+					LIMIT 1
+				) AS contact_number
 			FROM `tabLead` AS lead
-    		WHERE lead.creation BETWEEN '{filters.get("from_date")}' AND DATE_ADD('{filters.get("to_date")}', INTERVAL 1 DAY)
+			WHERE lead.creation BETWEEN '{filters.get("from_date")}' AND DATE_ADD('{filters.get("to_date")}', INTERVAL 1 DAY)
 		''', as_dict=1)
-			
+
 	elif filters.get('type') == 'Quotation':
 		data = frappe.db.sql(f'''
 			SELECT
@@ -183,7 +192,7 @@ def get_data(filters):
 					LIMIT 1
 				) AS description
 			FROM `tabQuotation` AS quo
-    		WHERE quo.docstatus = 1 and quo.transaction_date BETWEEN '{filters.get("from_date")}' AND DATE_ADD('{filters.get("to_date")}', INTERVAL 1 DAY)
+			WHERE quo.docstatus = 1 and quo.transaction_date BETWEEN '{filters.get("from_date")}' AND DATE_ADD('{filters.get("to_date")}', INTERVAL 1 DAY)
 		''', as_dict=1)
 
 	return data
