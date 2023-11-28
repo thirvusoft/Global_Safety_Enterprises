@@ -142,8 +142,4 @@ def make_quotation(source_name, target_doc=None):
 
     doclist.run_method("set_missing_values")
 
-<<<<<<< HEAD
-    return doclist
-=======
 	return doclist
->>>>>>> b859f93ad9efddebffed6d96b7a0f22f8eb6c00c
