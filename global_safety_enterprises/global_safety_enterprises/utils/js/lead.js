@@ -13,6 +13,7 @@ frappe.ui.form.on("Lead", {
             frm.remove_custom_button("Add to Prospect", "Action");
 
             $("[data-doctype='Prospect']").hide();
+			$("[data-doctype='Quotation']").hide();
 
 		},100)
 
