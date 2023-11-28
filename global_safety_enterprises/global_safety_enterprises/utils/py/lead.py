@@ -14,6 +14,14 @@ class CustomLead(Lead):
             if self.custom_address_line and self.city and self.state:
                 self.address_doc = self.create_address()
 
+    def validate(self):
+        self.set_full_name()
+        self.set_lead_name()
+        self.set_title()
+        # self.set_status()
+        self.check_email_id_is_unique()
+        self.validate_email_id()
+
     def create_address(self):
 
         if not self.lead_name:
