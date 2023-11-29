@@ -4,7 +4,7 @@ frappe.ui.form.on("Quotation", {
 
 		setTimeout(() => {
 			frm.remove_custom_button('Sales Order',"Create");
-			frm.remove_custom_button("Set as Lost");
+			// frm.remove_custom_button("Set as Lost");
 			frm.remove_custom_button("Opportunity", "Get Items From");
 		}, 100)
     },
@@ -16,6 +16,9 @@ frappe.ui.form.on("Quotation", {
 			frappe.model.set_value(frm.doc.items[i].doctype, frm.doc.items[i].name, "custom_ts_margin", frm.doc.custom_margin_)
 
 		}
+	},
+	custom_ts_status:function(frm){
+		cur_frm.set_value('status',frm.doc.custom_ts_status)
 	},
 	custom_view_follow_up_details: function(frm){
 		let data=`<table style="font-size:14px; border:1px solid black;width:100%">
