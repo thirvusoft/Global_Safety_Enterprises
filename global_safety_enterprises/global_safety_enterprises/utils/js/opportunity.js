@@ -32,16 +32,13 @@ frappe.ui.form.on("Opportunity", {
 							if (response.message['state']) {
 								if (response.message['state']  == 'Tamil Nadu') {
 									tax_category = 'In-State'
-									readvalue = 1
 								}
 								else{
 									tax_category = 'Out-State'
-									readvalue = 1
 								}
 							}
 							else{
-								tax_category = ''
-								readvalue = 0
+								tax_category = 'In-State'
 							}
 							var dialog = new frappe.ui.Dialog({
 								title: __("Create Customer"),
@@ -50,7 +47,7 @@ frappe.ui.form.on("Opportunity", {
 									{fieldtype: "Select", fieldname: "customer_type", label: __("Customer Type"), options: "Company\nIndividual\nProprietorship\nPartnership", reqd: 1},
 									{fieldtype: "Link", fieldname: "customer_group", label: __("Customer Group"), options: "Customer Group"},
 				
-									{fieldtype: "Link", fieldname: "tax_category", label: __("Tax Category"), default:tax_category,options: "Tax Category", reqd: 1,read_only:readvalue},
+									{fieldtype: "Link", fieldname: "tax_category", label: __("Tax Category"), default:tax_category,options: "Tax Category", hidden: 1},
 								],
 							});
 							dialog.set_primary_action(__("Save"), function() {
@@ -93,18 +90,8 @@ frappe.ui.form.on("Opportunity", {
 		}
 	},
 
-	status: function(frm){
+	custom_ts_status: function(frm){
 
-		if (frm.doc.status == "Quotation Created"){
-
-			frappe.show_alert(
-				{
-					message: "Not Allowed You To Set " + frm.doc.status + " - Status Manually.",
-					indicator: 'red'
-				}
-			);
-
-			frm.set_value("status", "")
-		}
+		frm.set_value("status", frm.doc.custom_ts_status)
 	}
 });
