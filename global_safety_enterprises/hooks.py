@@ -137,7 +137,8 @@ doc_events = {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.opportunity.update_status"
 	},
     "Quotation": {
-		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.update_status"
+		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.update_status",
+		'on_submit': "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.update_ts_status"
 	},
 	"Address": {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.address.address_tax_validation"
