@@ -126,14 +126,20 @@ def get_columns(filters):
 			'label': 'Contact Number',
 			'width': 182
 		},
+	]
 
-		{
-			'fieldname': 'remarks',
-			'fieldtype': 'Data',
-			'label': 'Remarks',
-			'width': 400
-		},
+	if filters.get("type") == "Lead":
+		columns += [
+			{
+				'fieldname': 'remarks',
+				'fieldtype': 'Data',
+				'label': 'Remarks',
+				'width': 400
+			},
+		]
 
+	columns += [
+		
 		{
 			'fieldname':'description',
 			'fieldtype':'Small Text',

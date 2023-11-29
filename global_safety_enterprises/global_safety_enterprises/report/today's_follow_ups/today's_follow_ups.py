@@ -114,7 +114,7 @@ def get_data(filters):
 					filters=[
 					["Dynamic Link", "link_doctype", "=", 'Lead'],
 					["Dynamic Link", "link_name", "=", i['name']],
-					["Contact Phone", 'is_primary_mobile_no',1]
+					["Contact Phone", 'is_primary_mobile_no', "=", 1]
 					],
 					fields=['`tabContact Phone`.phone'],
 					order_by='`tabContact`.creation desc'
@@ -151,7 +151,7 @@ def get_data(filters):
 		site_lead=leads
 		lead_filter['name'] = ['in', site_lead]
 
-		leads = frappe.db.get_all('Quotation', filters=lead_filter, fields=['name', 'customer_name as lead_name', 'custom_quotation_owner as lead_owner','status'])
+		leads = frappe.db.get_all('Quotation', filters=lead_filter, fields=['name', 'customer_name as lead_name', 'custom_quotation_owner as lead_owner','status', 'custom_ts_contact_number as contact_number'])
 
 		for i in leads:
 			i['description']=desc[i["name"]][0]
@@ -161,7 +161,7 @@ def get_data(filters):
 					filters=[
 					["Dynamic Link", "link_doctype", "=", 'Quotation'],
 					["Dynamic Link", "link_name", "=", i['name']],
-					["Contact Phone", 'is_primary_mobile_no',1]
+					["Contact Phone", 'is_primary_mobile_no', "=", 1]
 
 					],
 					fields=['`tabContact Phone`.phone'],
