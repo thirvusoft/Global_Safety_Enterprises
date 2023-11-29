@@ -16,33 +16,33 @@ def get_columns(filters):
 	columns = [
 
 		{
-			'fieldname': 'lead_quotation_id',
+			'fieldname': 'name',
 			'fieldtype': 'Data',
 			'label': 'Lead / Quotation ID',
-			'width': 182
+			'width': 195
 		},
 
 		{
 			'fieldname': 'lead_name',
 			'fieldtype': 'Data',
-			'label': 'Lead Name',
-			'width': 182
+			'label': 'Lead / Quotation Name',
+			'width': 195
 		},
 
 		{
 			'fieldname': 'lead_owner',
 			'fieldtype': 'Data',
-			'label': 'Lead Owner',
-			'width': 182
+			'label': 'Lead / Quotation Owner',
+			'width': 195
 		},
 
-		{
-			'fieldname': 'territory',
-			'fieldtype': 'Link',
-			'label': 'Territory',
-			'options': 'Territory',
-			'width': 182
-		},
+		# {
+		# 	'fieldname': 'territory',
+		# 	'fieldtype': 'Link',
+		# 	'label': 'Territory',
+		# 	'options': 'Territory',
+		# 	'width': 182
+		# },
 
 		{
 			'fieldname': 'status',
@@ -76,7 +76,102 @@ def get_columns(filters):
 	return columns
 
 def get_data(filters):
+	data=[]
+	if (filters.get('lead')):
+		follow_up_filter = {}
+		lead_filter = {'status':['not in', ['Do Not Contact']]}
+		if(filters.get('date')):
+			follow_up_filter['date'] = filters.get('date')
+		if (filters.get('user')):
+			follow_up_filter['followed_by'] = filters.get('user')
 
-	data = [{}]
+		all_leads = frappe.db.get_all('Follow-Up', filters=follow_up_filter, fields=['idx', 'parent','followed_by','description'])
+		all_leads1=[]
+		for i in all_leads:
+			follow_up_filter['parent'] = i['parent']
+			
+			if(max(frappe.db.get_all('Follow-Up', filters={'parent':i['parent']}, pluck='idx')) == i['idx']):
+				if(not i.get("followed_by")):
+					all_leads1.append(i)
+				elif(not filters.get("user")):
+					all_leads1.append(i)
+				elif(filters.get("user") and i.get("followed_by")==filters.get("user")):
+					all_leads1.append(i)
+		desc={i['parent']:[i['description'],i.get("followed_by") or ""] for i in all_leads1}
+
+
+		leads = [i['parent'] for i in all_leads1]
+		site_lead=leads
+		lead_filter['name'] = ['in', site_lead]
+
+		leads = frappe.db.get_all('Lead', filters=lead_filter, fields=['name', 'lead_name', 'lead_owner','status', 'custom_remarks as remarks'])
+
+		for i in leads:
+			i['description']=desc[i["name"]][0]
+			i['next_followup_by']=desc[i["name"]][1]
+			contact=frappe.get_all(
+				"Contact",
+					filters=[
+					["Dynamic Link", "link_doctype", "=", 'Lead'],
+					["Dynamic Link", "link_name", "=", i['name']],
+					["Contact Phone", 'is_primary_mobile_no',1]
+
+					],
+					fields=['`tabContact Phone`.phone'],
+					order_by='`tabContact`.creation desc'
+				)
+			if contact:
+				i['contact_number']=contact[0]['phone']
+		data+=leads
+		
+	if (filters.get('quotation')):
+		follow_up_filter = {}
+		lead_filter={}
+		lead_filter = {'status':['not in', ['Callcelled']]}
+		if(filters.get('date')):
+			follow_up_filter['date'] = filters.get('date')
+		if (filters.get('user')):
+			follow_up_filter['followed_by'] = filters.get('user')
+
+		all_leads = frappe.db.get_all('Follow-Up', filters=follow_up_filter, fields=['idx', 'parent','followed_by','description'])
+		all_leads1=[]
+		for i in all_leads:
+			follow_up_filter['parent'] = i['parent']
+			
+			if(max(frappe.db.get_all('Follow-Up', filters={'parent':i['parent']}, pluck='idx')) == i['idx']):
+				if(not i.get("followed_by")):
+					all_leads1.append(i)
+				elif(not filters.get("user")):
+					all_leads1.append(i)
+				elif(filters.get("user") and i.get("followed_by")==filters.get("user")):
+					all_leads1.append(i)
+		desc={i['parent']:[i['description'],i.get("followed_by") or ""] for i in all_leads1}
+
+
+		leads = [i['parent'] for i in all_leads1]
+		site_lead=leads
+		lead_filter['name'] = ['in', site_lead]
+
+		leads = frappe.db.get_all('Quotation', filters=lead_filter, fields=['name', 'customer_name as lead_name', 'custom_quotation_owner as lead_owner','status'])
+
+		for i in leads:
+			i['description']=desc[i["name"]][0]
+			i['next_followup_by']=desc[i["name"]][1]
+			contact=frappe.get_all(
+				"Contact",
+					filters=[
+					["Dynamic Link", "link_doctype", "=", 'Quotation'],
+					["Dynamic Link", "link_name", "=", i['name']],
+					["Contact Phone", 'is_primary_mobile_no',1]
+
+					],
+					fields=['`tabContact Phone`.phone'],
+					order_by='`tabContact`.creation desc'
+				)
+			if contact:
+				i['contact_number']=contact[0]['phone']
+		data+=leads
 
 	return data
+	
+	
