@@ -18,6 +18,7 @@ class CustomQuotation(Quotation):
 
         # update enquiry status
         # self.set_status(update=True)
+        self.status = 'Cancelled'
         self.update_opportunity("Open")
         self.update_lead()
 
