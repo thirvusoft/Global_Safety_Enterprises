@@ -71,6 +71,13 @@ def get_columns(filters):
 			'label':'Description',
 			'width':400
 		},
+
+		{
+			'fieldname': 'for_number_card',
+			'fieldtype': 'Int',
+			'label': 'For Number Card',
+			'hidden': 1,
+		},
 	]
 
 	return columns
@@ -107,6 +114,7 @@ def get_data(filters):
 		leads = frappe.db.get_all('Lead', filters=lead_filter, fields=['name', 'lead_name', 'lead_owner','status', 'custom_remarks as remarks'])
 
 		for i in leads:
+			i["for_number_card"] = 1
 			i['description']=desc[i["name"]][0]
 			i['next_followup_by']=desc[i["name"]][1]
 			contact=frappe.get_all(
@@ -155,6 +163,7 @@ def get_data(filters):
 		leads = frappe.db.get_all('Quotation', filters=lead_filter, fields=['name', 'customer_name as lead_name', 'custom_quotation_owner as lead_owner','status','custom_ts_contact_number as contact_number'])
 
 		for i in leads:
+			i["for_number_card"] = 1
 			i['description']=desc[i["name"]][0]
 			i['next_followup_by']=desc[i["name"]][1]
 			contact=frappe.get_all(

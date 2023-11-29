@@ -71,7 +71,14 @@ def get_columns(filters):
 			'fieldtype':'Small Text',
 			'label':'Description',
 			'width':400
-		}
+		},
+
+		{
+			'fieldname': 'for_number_card',
+			'fieldtype': 'Int',
+			'label': 'For Number Card',
+			'hidden': 1,
+		},
 	]
 
 	return columns
@@ -96,6 +103,7 @@ def get_data(filters):
 
 		data += frappe.db.sql(f'''
 		SELECT
+			1 as for_number_card,
 			lead.name AS lead_quotation_id,
 			lead.lead_name AS lead_name,
 			lead.lead_owner AS lead_owner,
@@ -141,6 +149,7 @@ def get_data(filters):
 
 		data += frappe.db.sql(f'''
 		SELECT
+			1 as for_number_card,
 			quotation.name AS lead_quotation_id,
 			quotation.customer_name AS lead_name,
 			quotation.custom_quotation_owner AS lead_owner,

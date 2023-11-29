@@ -7,7 +7,7 @@ frappe.query_reports["Daily Follow Up Status"] = {
 			fieldname: 'date',
 			label: 'Date',
 			fieldtype: 'Date',
-			default: 'Today',
+			default: frappe.datetime.get_today(),
 			reqd: 1
 		},
 		{

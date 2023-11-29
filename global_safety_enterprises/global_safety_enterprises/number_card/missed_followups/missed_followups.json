@@ -1,0 +1,22 @@
+{
+ "creation": "2023-11-29 15:53:51.719654",
+ "docstatus": 0,
+ "doctype": "Number Card",
+ "filters_json": "{\"date\":\"Today\",\"lead\":1}",
+ "function": "Count",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "label": "Missed Follow Ups",
+ "modified": "2023-11-29 15:55:18.048945",
+ "modified_by": "Administrator",
+ "module": "Global Safety Enterprises",
+ "name": "Missed Followups",
+ "owner": "Administrator",
+ "report_field": "for_number_card",
+ "report_function": "Sum",
+ "report_name": "Missed Follow Ups",
+ "show_percentage_stats": 1,
+ "stats_time_interval": "Daily",
+ "type": "Report"
+}

@@ -7,7 +7,7 @@ frappe.query_reports["Missed Follow Ups"] = {
 			fieldname: 'date',
 			label: 'Date',
 			fieldtype: 'Date',
-			default: 'Today',
+			default: frappe.datetime.get_today(),
 			reqd: 1
 		},
 		{
