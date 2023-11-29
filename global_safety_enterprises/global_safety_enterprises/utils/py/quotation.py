@@ -22,6 +22,17 @@ class CustomQuotation(Quotation):
         self.update_opportunity("Open")
         self.update_lead()
 
+    def on_submit(self):
+		# Check for Approving Authority
+		frappe.get_doc("Authorization Control").validate_approving_authority(
+			self.doctype, self.company, self.base_grand_total, self
+		)
+
+		# update enquiry status
+		self.update_opportunity("Quotation")
+		self.update_lead()
+        self.status = self.custom_ts_status
+
     def validate(self):
         super(Quotation, self).validate()
         # self.set_status()
