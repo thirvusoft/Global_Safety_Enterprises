@@ -76,6 +76,13 @@ def get_columns(filters):
 	return columns
 
 def get_data(filters):
+
+	if filters.get('user'):
+
+		filter_user = filters.get('user')
+
+		filters["user"] = frappe.get_value("User", {"username": filter_user}, "name")
+
 	data=[]
 	if (filters.get('lead')):
 		follow_up_filter = {}
@@ -173,4 +180,14 @@ def get_data(filters):
 
 	return data
 	
-	
+@frappe.whitelist()
+def get_user_list(user):
+
+	if frappe.get_value("User", {"name": frappe.session.user}, "followup_report"):
+
+		user_list = frappe.get_all("User", {"enabled": 1}, ["username"], pluck = "username")
+
+	else:
+		user_list = frappe.get_list("User", {"enabled": 1}, ["username"], pluck = "username")
+
+	return user_list
