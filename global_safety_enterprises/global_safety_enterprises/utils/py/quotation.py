@@ -9,6 +9,8 @@ def update_status(self,event):
         opportunity = frappe.get_doc('Opportunity',self.opportunity)
         opportunity.db_set("status", 'Quotation Created')
 
+def update_ts_status(doc,event):
+    doc.db_set('status',doc.custom_ts_status)
 
 class CustomQuotation(Quotation):
     def on_cancel(self):
@@ -21,17 +23,6 @@ class CustomQuotation(Quotation):
         self.status = 'Cancelled'
         self.update_opportunity("Open")
         self.update_lead()
-
-    def on_submit(self):
-		# Check for Approving Authority
-		frappe.get_doc("Authorization Control").validate_approving_authority(
-			self.doctype, self.company, self.base_grand_total, self
-		)
-
-		# update enquiry status
-		self.update_opportunity("Quotation")
-		self.update_lead()
-        self.status = self.custom_ts_status
 
     def validate(self):
         super(Quotation, self).validate()
