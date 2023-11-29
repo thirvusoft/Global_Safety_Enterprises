@@ -67,10 +67,11 @@ doctype_list_js = {"Opportunity" : "/global_safety_enterprises/utils/js/opportun
 # ----------
 
 # add methods and filters to jinja environment
-# jinja = {
-#	"methods": "global_safety_enterprises.utils.jinja_methods",
-#	"filters": "global_safety_enterprises.utils.jinja_filters"
-# }
+jinja = {
+    "methods" : [
+      "frappe.utils.data.money_in_words"
+    ]
+}
 
 # Installation
 # ------------
