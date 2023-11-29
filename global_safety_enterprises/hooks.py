@@ -144,6 +144,11 @@ doc_events = {
 	},
 	'Lead':{
 		'validate':"global_safety_enterprises.global_safety_enterprises.utils.py.lead.validate_replied"
+	},
+    
+	"Item": {
+        'validate': "global_safety_enterprises.global_safety_enterprises.utils.py.item.validate",
+        # 'after_insert': "global_safety_enterprises.global_safety_enterprises.utils.py.item.after_insert"
 	}
 }
 
