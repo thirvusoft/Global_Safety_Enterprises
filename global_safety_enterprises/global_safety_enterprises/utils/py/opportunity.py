@@ -31,7 +31,7 @@ def valid_closing_date_validation(self):
     if self.expected_closing < self.transaction_date:
         frappe.msgprint(msg = "Expected Closing Date Must Be Greater Than The Opportunity Date.", alert = True, indicator = "red", raise_exception = 1)
 
-def update_status(self,event):
+def update_status(self):
     if self.party_name and self.opportunity_from == 'Lead':
         if self.status == 'Open':
             lead = frappe.get_doc('Lead',self.party_name)
