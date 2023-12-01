@@ -149,8 +149,8 @@ doc_events = {
 	},
     
 	"Item": {
-        'validate': "global_safety_enterprises.global_safety_enterprises.utils.py.item.validate",
-        # 'after_insert': "global_safety_enterprises.global_safety_enterprises.utils.py.item.after_insert"
+        # 'validate': "global_safety_enterprises.global_safety_enterprises.utils.py.item.validate",
+        'after_insert': "global_safety_enterprises.global_safety_enterprises.utils.py.item.after_insert"
 	}
 }
 
