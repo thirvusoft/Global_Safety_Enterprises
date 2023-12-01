@@ -20,6 +20,16 @@ class CustomOpportunity(Opportunity):
                 copy_comments(self.opportunity_from, self.party_name, self)
                 link_communications(self.opportunity_from, self.party_name, self)
 
+def validate(self, event):
+
+    valid_closing_date_validation(self)
+
+    update_status(self)
+
+def valid_closing_date_validation(self):
+
+    if self.expected_closing < self.transaction_date:
+        frappe.msgprint(msg = "Expected Closing Date Must Be Greater Than The Opportunity Date.", alert = True, indicator = "red", raise_exception = 1)
 
 def update_status(self,event):
     if self.party_name and self.opportunity_from == 'Lead':

@@ -15,5 +15,13 @@ frappe.ui.form.on("Item", {
             $($("[data-doctype='Serial No']")[0].parentElement).hide();
             $($("[data-doctype='Stock Entry']")[0].parentElement).hide();
 		},100)
+        
+        frm.set_query("item_group", function () {
+			return {
+				filters: {
+					is_group: 0,
+				},
+			};
+		});
     }
 })
