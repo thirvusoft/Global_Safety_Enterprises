@@ -6,8 +6,15 @@ def after_insert(self, event):
 
 def validate(self, event):
 
-    if not self.get("__islocal"):
-        create_item_price(self)
+    valuation_rate_validation(self)
+
+    # if not self.get("__islocal"):
+    #     create_item_price(self)
+
+def valuation_rate_validation(self):
+
+    if self.valuation_rate <= 0:
+        frappe.msgprint(msg = "Valuation Rate (Purchase Rate) Must Be Greater Than The <b>0</b>.", alert = True, indicator = "red", raise_exception = 1)
 
 def create_item_price(self):
 

@@ -135,7 +135,7 @@ override_doctype_class = {
 
 doc_events = {
 	"Opportunity": {
-		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.opportunity.update_status"
+		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.opportunity.validate"
 	},
     "Quotation": {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.update_status",
@@ -149,7 +149,7 @@ doc_events = {
 	},
     
 	"Item": {
-        # 'validate': "global_safety_enterprises.global_safety_enterprises.utils.py.item.validate",
+        'validate': "global_safety_enterprises.global_safety_enterprises.utils.py.item.validate",
         'after_insert': "global_safety_enterprises.global_safety_enterprises.utils.py.item.after_insert"
 	}
 }
