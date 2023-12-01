@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Thirvu Master",
  "links": [],
- "modified": "2023-11-29 15:58:19.707377",
+ "modified": "2023-12-01 11:45:45.573048",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Thirvu Master",
@@ -93,17 +93,17 @@
   },
   {
    "color": "Grey",
-   "doc_view": "List",
-   "label": "Payment Terms Template",
-   "link_to": "Payment Terms Template",
+   "doc_view": "Tree",
+   "label": "Item Group",
+   "link_to": "Item Group",
    "stats_filter": "[]",
    "type": "DocType"
   },
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Item Group",
-   "link_to": "Item Group",
+   "label": "Payment Terms Template",
+   "link_to": "Payment Terms Template",
    "stats_filter": "[]",
    "type": "DocType"
   },
