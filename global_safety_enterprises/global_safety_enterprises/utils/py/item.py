@@ -1,5 +1,9 @@
 import frappe
 
+from frappe.utils import (
+    nowdate,
+    add_days
+)
 def after_insert(self, event):
 
     create_item_price(self)
@@ -8,8 +12,8 @@ def validate(self, event):
 
     valuation_rate_validation(self)
 
-    # if not self.get("__islocal"):
-    #     create_item_price(self)
+    if not self.get("__islocal"):
+        create_item_price(self)
 
 def valuation_rate_validation(self):
 
@@ -18,11 +22,25 @@ def valuation_rate_validation(self):
 
 def create_item_price(self):
 
-    new_doc = frappe.new_doc("Item Price")
+    default_price_list = frappe.db.get_single_value("Buying Settings", "buying_price_list")
 
-    new_doc.item_code = self.name
-    new_doc.price_list_rate = self.valuation_rate
+    existing_matched_price_doc = frappe.db.exists("Item Price", {"item_code": self.name, "valid_from": nowdate(), "price_list": default_price_list})
 
-    new_doc.price_list = frappe.db.get_single_value("Buying Settings", "buying_price_list")
+    if existing_matched_price_doc:
+        frappe.set_value("Item Price", existing_matched_price_doc, "price_list_rate", self.valuation_rate)
 
-    new_doc.save()
+    else:
+
+        existing_matched_price_doc = frappe.db.exists("Item Price", {"item_code": self.name, "price_list": default_price_list, "valid_upto": ("is", "not set")})
+        
+        if existing_matched_price_doc:
+            frappe.set_value("Item Price", existing_matched_price_doc, "valid_upto", add_days(nowdate(), -1))
+
+        new_doc = frappe.new_doc("Item Price")
+
+        new_doc.item_code = self.name
+        new_doc.price_list_rate = self.valuation_rate
+
+        new_doc.price_list = default_price_list
+
+        new_doc.save()
