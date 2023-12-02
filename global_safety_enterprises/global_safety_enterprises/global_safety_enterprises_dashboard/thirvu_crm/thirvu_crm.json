@@ -11,9 +11,6 @@
   },
   {
    "card": "Today Lost Quotation"
-  },
-  {
-   "card": "Today Followed Lead Count"
   }
  ],
  "charts": [
@@ -28,7 +25,7 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "modified": "2023-11-29 15:46:45.821460",
+ "modified": "2023-12-02 13:23:58.832271",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Thirvu CRM",

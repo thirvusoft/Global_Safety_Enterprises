@@ -16,6 +16,14 @@ frappe.ui.form.on("Opportunity", {
 
         }, 100);
 
+		frm.set_query("opportunity_owner", function () {
+			return {
+				filters: {
+					enabled: 1,
+				},
+			};
+		});
+
 		var opp_value = await frappe.db.get_list("Customer",{filters:{opportunity_name:cur_frm.doc.name}})
 		if (!opp_value.length){
 

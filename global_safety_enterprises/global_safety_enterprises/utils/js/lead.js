@@ -17,6 +17,14 @@ frappe.ui.form.on("Lead", {
 
 		},100)
 
+		frm.set_query("lead_owner", function () {
+			return {
+				filters: {
+					enabled: 1,
+				},
+			};
+		});
+
 		var opp_value = await frappe.db.get_list("Opportunity",
 			{
 				filters:{party_name: cur_frm.doc.name}

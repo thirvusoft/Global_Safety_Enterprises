@@ -6,6 +6,22 @@ frappe.ui.form.on("Quotation", {
 			frm.remove_custom_button('Sales Order',"Create");
 			frm.remove_custom_button("Opportunity", "Get Items From");
 		}, 100)
+
+		frm.set_query("custom_quotation_owner", function () {
+			return {
+				filters: {
+					enabled: 1,
+				},
+			};
+		});
+
+		frm.set_query("custom_project_location", function () {
+			return {
+				filters: {
+					is_group: 0,
+				},
+			};
+		});
     },
 
 	custom_margin_: function(frm){

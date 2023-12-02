@@ -17,6 +17,7 @@
  ],
  "fields": [
   {
+   "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
    "in_list_view": 1,
@@ -24,6 +25,7 @@
    "reqd": 1
   },
   {
+   "default": "__user",
    "fieldname": "followed_by",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -71,7 +73,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-12-02 12:46:48.875535",
+ "modified": "2023-12-02 13:28:32.276932",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Follow-Up",
