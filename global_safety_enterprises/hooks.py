@@ -138,14 +138,14 @@ doc_events = {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.opportunity.validate"
 	},
     "Quotation": {
-		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.update_status",
+		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.validate",
 		'on_submit': "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.update_ts_status"
 	},
 	"Address": {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.address.address_tax_validation"
 	},
 	'Lead':{
-		'validate':"global_safety_enterprises.global_safety_enterprises.utils.py.lead.validate_replied"
+		'validate':"global_safety_enterprises.global_safety_enterprises.utils.py.lead.validate"
 	},
     
 	"Item": {

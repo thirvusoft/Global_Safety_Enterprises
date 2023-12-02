@@ -1,6 +1,18 @@
 import frappe
 from erpnext.selling.doctype.quotation.quotation import Quotation
-def update_status(self,event):
+from frappe.utils import getdate
+
+def validate(self,event):
+    update_status(self)
+    validate_followup_date(self)
+
+def validate_followup_date(self):
+    for date in self.custom_followup:
+        for other in range(date.idx,len(self.custom_followup),1):
+            if getdate(date.date) > getdate(self.custom_followup[other].date):
+                frappe.msgprint(f'The Date in <span style="color:red">Row - {self.custom_followup[other].idx}</span> is earlier than the Date in <span style="color:red">Row - {date.idx}</span>. Please review the Date ..',title='Warning',raise_exception = 1)
+
+def update_status(self):
     if self.party_name and self.quotation_to == 'Customer':
         if frappe.get_value('Customer',self.customer,'lead_name'):
             lead = frappe.get_doc('Lead',frappe.get_value('Customer',self.customer,'lead_name'))
