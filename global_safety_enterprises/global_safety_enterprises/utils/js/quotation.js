@@ -4,17 +4,25 @@ frappe.ui.form.on("Quotation", {
 
 		setTimeout(() => {
 			frm.remove_custom_button('Sales Order',"Create");
-			// frm.remove_custom_button("Set as Lost");
 			frm.remove_custom_button("Opportunity", "Get Items From");
 		}, 100)
     },
 
 	custom_margin_: function(frm){
 
-		for (var i = 0; i < (frm.doc.items).length; i++){
+		if (frm.doc.custom_margin_ >= 0){
 
-			frappe.model.set_value(frm.doc.items[i].doctype, frm.doc.items[i].name, "custom_ts_margin", frm.doc.custom_margin_)
+			for (var i = 0; i < (frm.doc.items).length; i++){
 
+				frappe.model.set_value(frm.doc.items[i].doctype, frm.doc.items[i].name, "custom_ts_margin", frm.doc.custom_margin_)
+
+			}
+		}
+		else{
+
+			frm.set_value("custom_margin_", 0)
+
+			frappe.show_alert({message: "Margin (%) Must Be Postive Number.", indicator: 'red'});
 		}
 	},
 	custom_ts_status:function(frm){
@@ -105,8 +113,18 @@ frappe.ui.form.on("Quotation Item", {
 
 		var data = locals[cdt][cdn]
 
-		frappe.model.set_value(cdt, cdn, "margin_type", "Percentage")
-		frappe.model.set_value(cdt, cdn, "margin_rate_or_amount", data.custom_ts_margin)
+		if (data.custom_ts_margin >= 0){
+
+			frappe.model.set_value(cdt, cdn, "margin_type", "Percentage")
+			frappe.model.set_value(cdt, cdn, "margin_rate_or_amount", data.custom_ts_margin)
+		}
+		else{
+
+			frappe.model.set_value(cdt, cdn, "custom_ts_margin", 0)
+
+			frappe.show_alert({message: "Margin (%) Must Be Postive Number, In Row <b>" + data.idx + "</b>.", indicator: 'red'});
+		}
+
 	},
 
 	item_code: function(frm, cdt, cdn){
@@ -116,5 +134,18 @@ frappe.ui.form.on("Quotation Item", {
 			frappe.model.set_value(cdt, cdn, "custom_ts_margin", frm.doc.custom_margin_)
 
 		}, 200);
+	},
+
+	rate: function(frm, cdt, cdn){
+
+		var data = locals[cdt][cdn]
+
+		if (data.rate < 0){
+
+			frappe.model.set_value(cdt, cdn, "rate", data.price_list_rate)
+
+			frappe.show_alert({message: "Rate Must Be Postive Number, In Row <b>" + data.idx + "</b>, So Default Purchase Rate Is Set.", indicator: 'red'});
+		}
+
 	}
 })
