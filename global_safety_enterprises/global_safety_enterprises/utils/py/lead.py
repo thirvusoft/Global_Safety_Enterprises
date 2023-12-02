@@ -1,7 +1,19 @@
 import frappe
 from erpnext.crm.doctype.lead.lead import Lead
 from frappe import _
-def validate_replied(doc, event):
+from frappe.utils import getdate
+
+def validate(doc,event):
+    validate_replied(doc)
+    validate_followup_date(doc)
+
+def validate_followup_date(doc):
+    for date in doc.custom_view_follow_up_details_copy:
+        for other in range(date.idx,len(doc.custom_view_follow_up_details_copy),1):
+            if getdate(date.date) > getdate(doc.custom_view_follow_up_details_copy[other].date):
+                frappe.msgprint(f'The Date ({date.date}) in <span style="color:red">Row - {doc.custom_view_follow_up_details_copy[other].idx}</span> is earlier than the Date ({doc.custom_view_follow_up_details_copy[other].date}) in <span style="color:red">Row - {date.idx}</span>. Please review the Date ..',title='Warning',raise_exception = 1)
+
+def validate_replied(doc):
 
     if doc.status in ["Open", "Replied", 'Do Not Disturb']:
         
