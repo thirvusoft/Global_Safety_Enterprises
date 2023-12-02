@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"pjLWBKfCIc\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Thirvu Master</span>\",\"col\":12}},{\"id\":\"M2zVEFIbIh\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User\",\"col\":3}},{\"id\":\"b0TOefz8P0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item\",\"col\":3}},{\"id\":\"M6fBtdtfHb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item Group\",\"col\":3}},{\"id\":\"7sybf_5-iW\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item Price\",\"col\":3}},{\"id\":\"LoRPtSPpYj\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Group\",\"col\":3}},{\"id\":\"WpL1uxZhU0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Territory\",\"col\":3}},{\"id\":\"uUSLaYbrDf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Terms and Conditions\",\"col\":3}},{\"id\":\"fEQercUCzo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payment Terms Template\",\"col\":3}},{\"id\":\"hADwtHkrME\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"QpS-EdVzMF\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Dashboard</b></span>\",\"col\":12}},{\"id\":\"fChCHFmzDt\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today New Lead\",\"col\":4}},{\"id\":\"7p3v8uAL_G\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today New Quotation\",\"col\":4}},{\"id\":\"MsEcV6Uk24\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Quotation Ordered Status\",\"col\":4}},{\"id\":\"7PToURWtLN\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today Followed Lead / Quotation Count\",\"col\":4}},{\"id\":\"AvZgKWYbRm\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Missed Follow Ups\",\"col\":4}},{\"id\":\"o1YFKCw1-0\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today Lost Quotation\",\"col\":4}}]",
+ "content": "[{\"id\":\"pjLWBKfCIc\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Thirvu Master</span>\",\"col\":12}},{\"id\":\"M2zVEFIbIh\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"User\",\"col\":3}},{\"id\":\"b0TOefz8P0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item\",\"col\":3}},{\"id\":\"M6fBtdtfHb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item Group\",\"col\":3}},{\"id\":\"7sybf_5-iW\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Item Price\",\"col\":3}},{\"id\":\"LoRPtSPpYj\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Customer Group\",\"col\":3}},{\"id\":\"WpL1uxZhU0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Territory\",\"col\":3}},{\"id\":\"uUSLaYbrDf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Terms and Conditions\",\"col\":3}},{\"id\":\"fEQercUCzo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payment Terms Template\",\"col\":3}},{\"id\":\"hADwtHkrME\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"QpS-EdVzMF\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Dashboard</b></span>\",\"col\":12}},{\"id\":\"fChCHFmzDt\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today New Lead\",\"col\":4}},{\"id\":\"7p3v8uAL_G\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today New Quotation\",\"col\":4}},{\"id\":\"MsEcV6Uk24\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today Quotation Ordered Status\",\"col\":4}},{\"id\":\"7PToURWtLN\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today Followed Lead / Quotation Count\",\"col\":4}},{\"id\":\"AvZgKWYbRm\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Missed Follow Ups\",\"col\":4}},{\"id\":\"o1YFKCw1-0\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Today Lost Quotation\",\"col\":4}}]",
  "creation": "2023-11-18 12:10:16.581582",
  "custom_blocks": [],
  "docstatus": 0,
@@ -13,11 +13,15 @@
  "is_hidden": 0,
  "label": "Thirvu Master",
  "links": [],
- "modified": "2023-12-02 13:30:21.949501",
+ "modified": "2023-12-02 16:16:37.344488",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Thirvu Master",
  "number_cards": [
+  {
+   "label": "Today Quotation Ordered Status",
+   "number_card_name": "Today Quotation Ordered Status"
+  },
   {
    "label": "Today Followed Lead / Quotation Count",
    "number_card_name": "Today Followed Lead Quotation Count"
@@ -25,10 +29,6 @@
   {
    "label": "Missed Follow Ups",
    "number_card_name": "Missed Follow Ups"
-  },
-  {
-   "label": "Quotation Ordered Status",
-   "number_card_name": "Quotation Ordered Status"
   },
   {
    "label": "Today New Lead",

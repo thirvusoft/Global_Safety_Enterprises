@@ -1,11 +1,15 @@
 import frappe
 from erpnext.selling.doctype.quotation.quotation import Quotation
-from frappe.utils import getdate
+from frappe.utils import getdate, nowdate
 
 def validate(self,event):
     update_status(self)
     validate_followup_date(self)
+    update_date_status(self, event)
 
+def on_update(self, event):
+    update_date_status(self, event)
+    
 def validate_followup_date(self):
     for date in self.custom_followup:
         for other in range(date.idx,len(self.custom_followup),1):
@@ -23,6 +27,21 @@ def update_status(self):
 
 def update_ts_status(doc,event):
     doc.db_set('status',doc.custom_ts_status)
+
+def update_date_status(self, event):
+    if self.status == "Ordered" and event == "validate":
+        self.custom_ts_orderd_date = nowdate()
+
+    elif self.status == "Lost" and event == "validate":
+        self.custom_ts_lost_date = nowdate()
+
+    elif self.status == "Ordered" and event == "on_change":
+        self.custom_ts_orderd_date = nowdate()
+        self.db_update()
+
+    elif self.status == "Lost" and event == "on_change":
+        self.custom_ts_lost_date = nowdate()
+        self.db_update()
 
 class CustomQuotation(Quotation):
     def on_cancel(self):
