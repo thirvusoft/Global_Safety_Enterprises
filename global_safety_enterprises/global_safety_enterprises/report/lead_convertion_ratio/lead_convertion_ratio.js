@@ -24,7 +24,8 @@ frappe.query_reports["Lead Convertion Ratio"] = {
 			label: 'Type',
 			fieldtype: 'Select',
 			options: 'Lead\nQuotation',
-			reqd: 1
+			reqd: 1,
+			default: "Lead"
 		},
 	]
 };

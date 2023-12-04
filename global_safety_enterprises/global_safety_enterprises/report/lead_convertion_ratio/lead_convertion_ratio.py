@@ -73,22 +73,31 @@ def get_chart_summary(data,filters):
 
 def get_columns(filters):
 
-	columns = [
-		{
-			'fieldname': 'doctype',
-			'fieldtype': 'Link',
-			'label': f'DocType',
-			'width': 182,
-			'options':"DocType",
-			'hidden':1
-		},
-		{
-			'fieldname': 'id',
-			'fieldtype': 'Dynamic Link',
-			'label': f'{filters.get("type")} ID',
-			'options':'doctype',
-			'width': 200
-		},
+	if filters.get("type") == "Lead":
+
+		columns = [
+			{
+				'fieldname': 'id',
+				'fieldtype': 'Link',
+				'label': 'Lead ID',
+				'options':'Lead',
+				'width': 200
+			},
+		]
+
+	else:
+
+		columns = [
+			{
+				'fieldname': 'id',
+				'fieldtype': 'Link',
+				'label': 'Quotation ID',
+				'options':'Quotation',
+				'width': 200
+			},
+		]
+
+	columns += [
 
 		{
 			'fieldname': 'name',
