@@ -44,6 +44,7 @@
    "mandatory_depends_on": "eval: !doc.status"
   },
   {
+   "default": "__user",
    "fieldname": "next_follow_up_by",
    "fieldtype": "Link",
    "ignore_user_permissions": 1,
@@ -93,7 +94,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-12-04 11:52:50.842965",
+ "modified": "2023-12-04 13:21:27.631430",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Follow-Up",
