@@ -155,7 +155,10 @@ doc_events = {
 	"Item": {
         'validate': "global_safety_enterprises.global_safety_enterprises.utils.py.item.validate",
         'after_insert': "global_safety_enterprises.global_safety_enterprises.utils.py.item.after_insert"
-	}
+	},
+    "User": {
+        "validate":"global_safety_enterprises.global_safety_enterprises.utils.py.user.user_permission_create"
+    }
 }
 
 # Scheduled Tasks
