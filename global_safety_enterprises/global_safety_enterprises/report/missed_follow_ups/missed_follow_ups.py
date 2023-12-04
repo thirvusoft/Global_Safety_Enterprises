@@ -140,7 +140,10 @@ def get_data(filters):
 			) <= '{filters.get("date")}'
 			{follow_condition}
 		''', as_dict = 1)
-		
+	for i in data:
+		i["lead_quotation_id"]=f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 24px;" onclick='frappe.set_route("Form", "Lead", "{i["lead_quotation_id"]}" )'>
+			{i["lead_quotation_id"]}
+			</button>'''
 	if filters.get('quotation'):
 
 		if filters.get('user'):
@@ -177,7 +180,10 @@ def get_data(filters):
 			) <= '{filters.get("date")}'
 			{follow_condition}
 		''', as_dict = 1)
-
+	for i in data:
+		i["lead_quotation_id"]=f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 24px;" onclick='frappe.set_route("Form", "Quotation", "{i["lead_quotation_id"]}" )'>
+			{i["lead_quotation_id"]}
+			</button>'''
 	return data
 
 @frappe.whitelist()
