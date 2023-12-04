@@ -85,7 +85,7 @@ frappe.ui.form.on("Quotation", {
 				</td>
 				<td style="border:1px solid black; padding:5px;">
 				<center>
-					${row.date || ""}
+					${frappe.format(row.date, {fieldtype:'Date'})}
 				</center>
 				</td>
 				<td style="border:1px solid black; padding:5px;">
@@ -95,7 +95,7 @@ frappe.ui.form.on("Quotation", {
 				</td>
 				<td style="border:1px solid black; padding:5px;">
 				<center>
-					${row.followed_by || ""}
+					${row.user_name || ""}
 				</center>
 				</td>
 				<td style="border:1px solid black; padding:5px;">
