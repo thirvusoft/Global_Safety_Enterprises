@@ -133,7 +133,8 @@ def get_data(filters):
 	if (filters.get('quotation')):
 		follow_up_filter = {}
 		lead_filter={}
-		lead_filter = {'status':['not in', ['Callcelled']]}
+		lead_filter = {'docstatus':['not in', [2]]}
+
 		if(filters.get('date')):
 			follow_up_filter['next_follow_up_date'] = filters.get('date')
 		if (filters.get('user')):
