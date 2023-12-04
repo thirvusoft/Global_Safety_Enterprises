@@ -1050,7 +1050,7 @@
    "columns": 0,
    "creation": "2023-11-28 18:41:48.301146",
    "default": "Open",
-   "depends_on": "eval:['Draft','Open','Partially Ordered','Ordered'].includes(doc.status)",
+   "depends_on": "",
    "description": null,
    "docstatus": 0,
    "dt": "Quotation",
