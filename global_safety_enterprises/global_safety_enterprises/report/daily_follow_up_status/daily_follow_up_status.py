@@ -135,7 +135,7 @@ def get_data(filters):
 	if (filters.get('quotation')):
 		follow_up_filter = {}
 		lead_filter={}
-		lead_filter = {'status':['not in', ['Callcelled']]}
+		lead_filter = {'docstatus':['not in', [2]]}
 		if(filters.get('date')):
 			follow_up_filter['date'] = filters.get('date')
 		if (filters.get('user')):
