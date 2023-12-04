@@ -43,7 +43,44 @@ frappe.ui.form.on("Lead", {
 			});
 		}
     },
-	
+	onload:function(frm){
+      
+        frappe.ui.form.LeadController =  class LeadController extends frappe.ui.form.AddressQuickEntryForm{
+                guess_default_party() {
+                    const doc = cur_frm && cur_frm.doc;
+                    if (!doc) return;
+                    if (
+                        ![
+                            ...frappe.boot.sales_doctypes,
+                            ...frappe.boot.purchase_doctypes,
+                            "Customer",
+                            'Lead',
+                            "Supplier",
+                            "Company",
+                        ].includes(doc.doctype)
+                    )
+                        return;
+ 
+ 
+                    let party_type = doc.doctype;
+                    let party = doc.name;
+ 
+ 
+                    if (frappe.dynamic_link && frappe.dynamic_link.doc === doc) {
+                        party_type = frappe.dynamic_link.doctype;
+                        party = frappe.dynamic_link.doc[frappe.dynamic_link.fieldname];
+                    }
+ 
+ 
+                    return {
+                        party_type: party_type,
+                        party: party,
+                    };
+                }
+            };
+            frappe.ui.form.AddressQuickEntryForm = frappe.ui.form.LeadController
+      },
+ 
 	custom_view_follow_up_details: function(frm){
 		let data=`<table style="font-size:14px; border:1px solid black;width:100%">
 

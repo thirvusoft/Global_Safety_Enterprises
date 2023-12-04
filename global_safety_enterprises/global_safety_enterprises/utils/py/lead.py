@@ -56,8 +56,13 @@ class CustomLead(Lead):
                 "address_line1": self.custom_address_line,
                 "city": self.city,
                 "state": self.state,
-                "emaail_id": self.email_id,
+                "email_id": self.email_id,
                 "phone": self.mobile_no,
+                'gstin':self.custom_gstin__uin,
+                'gst_category':self.custom_gst_category,
+                'pincode':self.custom_postal_code,
+                'address_type':self.custom_address_type,
+                'address_line2':self.custom_address_line_2
             }
         )
 
