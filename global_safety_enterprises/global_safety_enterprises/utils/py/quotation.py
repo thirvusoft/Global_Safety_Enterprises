@@ -6,6 +6,7 @@ def validate(self,event):
     update_status(self)
     validate_followup_date(self)
     update_date_status(self, event)
+    validate_lost_status(self, event)
 
 def on_update(self, event):
     update_date_status(self, event)
@@ -24,6 +25,12 @@ def update_status(self):
     if self.opportunity:
         opportunity = frappe.get_doc('Opportunity',self.opportunity)
         opportunity.db_set("status", 'Quotation Created')
+        
+def validate_lost_status(self, event):
+    if self.custom_followup:
+        if self.custom_followup[-1].status == "Do Not Disturb" :
+            self.db_set('status' , "Lost")
+            self.reload()
 
 def update_ts_status(doc,event):
     doc.db_set('status',doc.custom_ts_status)
