@@ -93,7 +93,8 @@ def get_data(filters):
 
 	follow_condition = ""
 
-	data = []
+	data1 = []
+	data2 = []
 
 	if filters.get('lead'):
 
@@ -107,7 +108,7 @@ def get_data(filters):
 				LIMIT 1
 			) = '{filters.get('user')}'"""
 
-		data += frappe.db.sql(f'''
+		data1 += frappe.db.sql(f'''
 		SELECT
 			1 as for_number_card,
 			lead.name AS lead_quotation_id,
@@ -140,7 +141,12 @@ def get_data(filters):
 			) <= '{filters.get("date")}'
 			{follow_condition}
 		''', as_dict = 1)
+		for i in data1:
+			i['lead_quotation_id'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 23px;" onclick='frappe.set_route("Form", "Quotation", "{i["lead_quotation_id"]}" )'>
+				{i["lead_quotation_id"]}
+				</button>'''
 		
+
 	if filters.get('quotation'):
 
 		if filters.get('user'):
@@ -153,7 +159,7 @@ def get_data(filters):
 				LIMIT 1
 			) = '{filters.get('user')}'"""
 
-		data += frappe.db.sql(f'''
+		data2 = frappe.db.sql(f'''
 		SELECT
 			1 as for_number_card,
 			quotation.name AS lead_quotation_id,
@@ -177,7 +183,11 @@ def get_data(filters):
 			) <= '{filters.get("date")}'
 			{follow_condition}
 		''', as_dict = 1)
-
+		for i in data2:
+			i['lead_quotation_id'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 23px;" onclick='frappe.set_route("Form", "Quotation", {i["lead_quotation_id"]} )'>
+				{i["lead_quotation_id"]}
+				</button>'''
+	data=data1+data2
 	return data
 
 @frappe.whitelist()
