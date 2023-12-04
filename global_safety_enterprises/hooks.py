@@ -128,7 +128,9 @@ override_doctype_class = {
 	'Opportunity':"global_safety_enterprises.global_safety_enterprises.utils.py.opportunity.CustomOpportunity",
 	'Quotation':"global_safety_enterprises.global_safety_enterprises.utils.py.quotation.CustomQuotation"
 }
-
+override_doctype_dashboards = {
+    "Lead": "global_safety_enterprises.global_safety_enterprises.utils.py.lead_dashboard.get_data",
+}
 # Document Events
 # ---------------
 # Hook on document methods and events
