@@ -1,7 +1,12 @@
 frappe.ui.form.on("Quotation", {
 
     refresh: function(frm){
-
+		if(['Ordered','Lost'].includes(frm.doc.status)){
+			frm.set_df_property('custom_followup', 'read_only', 1);
+		}
+		else{
+			frm.set_df_property('custom_followup', 'read_only',0);
+		}
 		setTimeout(() => {
 			frm.remove_custom_button("Set as Lost");
 			frm.remove_custom_button('Sales Order',"Create");

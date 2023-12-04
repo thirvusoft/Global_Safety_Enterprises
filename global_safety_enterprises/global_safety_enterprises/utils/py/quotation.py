@@ -1,13 +1,15 @@
 import frappe
 from erpnext.selling.doctype.quotation.quotation import Quotation
 from frappe.utils import getdate, nowdate
+from global_safety_enterprises.global_safety_enterprises.utils.py.lead import validate_phone_number
 
 def validate(self,event):
     update_status(self)
     validate_followup_date(self)
     update_date_status(self, event)
     validate_lost_status(self, event)
-
+    validate_phone_number(self.custom_ts_contact_number)
+    
 def on_update(self, event):
     update_date_status(self, event)
     
