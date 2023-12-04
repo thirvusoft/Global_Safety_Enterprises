@@ -29,8 +29,11 @@ def update_status(self):
 def validate_lost_status(self, event):
     if self.custom_followup:
         if self.custom_followup[-1].status == "Do Not Disturb" :
-            self.db_set('status' , "Lost")
-            self.reload()
+            if self.docstatus == 1:
+                self.db_set('status' , "Lost")
+                self.reload()
+            if self.docstatus == 0:
+                frappe.throw("Kindly Submit This Quotation and then update the status")
 
 def update_ts_status(doc,event):
     doc.db_set('status',doc.custom_ts_status)
