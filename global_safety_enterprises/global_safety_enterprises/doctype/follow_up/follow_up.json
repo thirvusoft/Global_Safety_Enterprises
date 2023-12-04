@@ -86,15 +86,15 @@
   {
    "depends_on": "eval: doc.parenttype == \"Quotation\" &&  doc.status == \"Do Not Disturb\"",
    "fieldname": "competitor",
-   "fieldtype": "Table MultiSelect",
+   "fieldtype": "Link",
    "label": " Competitor",
-   "options": "Competitor Detail"
+   "options": "Competitor"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-12-04 13:21:27.631430",
+ "modified": "2023-12-04 13:59:45.950852",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Follow-Up",
