@@ -2,10 +2,12 @@ import frappe
 from erpnext.crm.doctype.lead.lead import Lead
 from frappe import _
 from frappe.utils import getdate
+import re
 
 def validate(doc,event):
     validate_replied(doc)
     validate_followup_date(doc)
+    validate_phone_number(doc.mobile_no)
 
 def validate_followup_date(doc):
     for date in doc.custom_view_follow_up_details_copy:
@@ -120,3 +122,22 @@ class CustomLead(Lead):
         contact.reload()  # load changes by hooks on contact
 
         return contact
+
+
+PHONE_NUMBER_PATTERN = re.compile(r"\b\d{10}\b")
+
+@frappe.whitelist()
+def validate_phone_number(phone_number, throw=True):
+	"""Returns True if valid phone number"""
+	if not phone_number:
+		return False
+
+	phone_number = phone_number.strip()
+	match = PHONE_NUMBER_PATTERN.match(phone_number)
+
+	if not match and throw:
+		frappe.throw(
+			frappe._("{0} is not a valid Phone Number").format(phone_number), frappe.InvalidPhoneNumberError
+		)
+
+	return bool(match)
