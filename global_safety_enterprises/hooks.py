@@ -33,7 +33,8 @@ doctype_js = {"Lead" : "/global_safety_enterprises/utils/js/lead.js",
             "Customer": "/global_safety_enterprises/utils/js/customer.js",
             "Item": "/global_safety_enterprises/utils/js/item.js",
             "Quotation": "/global_safety_enterprises/utils/js/quotation.js",
-            "User": "/global_safety_enterprises/utils/js/user.js"
+            "User": "/global_safety_enterprises/utils/js/user.js",
+			'Address': '/global_safety_enterprises/utils/js/address.js'
             }
 
 doctype_list_js = {"Opportunity" : "/global_safety_enterprises/utils/js/opportunity_list.js",
@@ -145,7 +146,8 @@ doc_events = {
         "on_change": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_update",
 	},
 	"Address": {
-		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.address.address_tax_validation"
+		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.address.address_tax_validation",
+		'after_insert':"global_safety_enterprises.global_safety_enterprises.utils.py.address.after_save_address"
 	},
 	'Lead':{
 		'validate':"global_safety_enterprises.global_safety_enterprises.utils.py.lead.validate"
@@ -154,6 +156,9 @@ doc_events = {
 	"Item": {
         'validate': "global_safety_enterprises.global_safety_enterprises.utils.py.item.validate",
         'after_insert': "global_safety_enterprises.global_safety_enterprises.utils.py.item.after_insert"
+	},
+	'Contact':{
+		'validate': "global_safety_enterprises.global_safety_enterprises.utils.py.contact.validate",
 	}
 }
 
