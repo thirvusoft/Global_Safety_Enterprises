@@ -95,9 +95,7 @@ def get_data(filters):
 		all_leads = frappe.db.get_all('Follow-Up', filters=follow_up_filter, fields=['idx', 'parent','next_follow_up_by','description'])
 		all_leads1=[]
 		for i in all_leads:
-			frappe.errprint(all_leads)
-			follow_up_filter['parent'] = i['parent']
-			
+			follow_up_filter['parent'] = i['parent']			
 			if(max(frappe.db.get_all('Follow-Up', filters={'parent':i['parent']}, pluck='idx')) == i['idx']):
 				if(not i.get("next_follow_up_by")):
 					all_leads1.append(i)
@@ -111,8 +109,6 @@ def get_data(filters):
 		leads = [i['parent'] for i in all_leads1]
 		site_lead=leads
 		lead_filter['name'] = ['in', site_lead]
-
-		frappe.errprint(all_leads)
 		leads = frappe.db.get_all('Lead', filters=lead_filter, fields=['name', 'lead_name', 'lead_owner','status', 'custom_remarks as remarks'])
 
 		for i in leads:
