@@ -29,7 +29,7 @@ def update_status(self):
         opportunity.db_set("status", 'Quotation Created')
         
 def validate_lost_status(self, event):
-    if self.custom_followup:
+    if self.custom_followup and not self.custom_status_updated:
         if self.custom_followup[-1].status == "Do Not Disturb" :
             if self.docstatus == 1:
                 self.db_set('status' , "Lost")
