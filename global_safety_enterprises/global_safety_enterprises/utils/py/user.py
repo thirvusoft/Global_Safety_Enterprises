@@ -18,12 +18,10 @@ def user_permission_create(doc, action=None):
                 try:
                     user_permission.save()
                     frappe.db.commit()
-                    frappe.msgprint("User Permission Created Successfully")
                     doc.reload()
                     message="User Permision Created Successfully"
                     frappe.log_error(title=doc.name, message=message)
                 except frappe.ValidationError as e:
-                    frappe.msgprint("User Permission not Created")
                     message=e
                     frappe.log_error(title=doc.name, message=e)
         else:
