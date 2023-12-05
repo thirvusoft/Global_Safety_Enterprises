@@ -21,7 +21,6 @@ def user_permission_create(doc, action=None):
                     doc.reload()
 
                 except frappe.ValidationError as e:
-                    frappe.msgprint("User Permission not Created")
                     message=e
                     frappe.log_error(title=doc.name, message=e)
         else:
