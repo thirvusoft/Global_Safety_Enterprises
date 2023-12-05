@@ -49,6 +49,8 @@ frappe.ui.form.on("Quotation", {
 	},
 	custom_ts_status:function(frm){
 		cur_frm.set_value('status',frm.doc.custom_ts_status)
+		cur_frm.set_value('custom_status_updated',1)
+		
 	},
 	custom_view_follow_up_details: function(frm){
 		let data=`<table style="font-size:14px; border:1px solid black;width:100%">
@@ -195,6 +197,15 @@ frappe.ui.form.on("Follow-Up", {
 		if(row.next_follow_up_date < row.date){
 			frappe.show_alert({message:`Follow Up Date - <span style='color:red'>${moment(row.next_follow_up_date).format('DD-MM-YYYY')}</span> should not be earlier than Date -<span style='color:red'> ${moment(row.date).format('DD-MM-YYYY')}</span>`,indicator:'red'})
 			row.next_follow_up_date = ''
+		}
+	},
+	status:function(frm,cdt,cdn){
+		let row = locals[cdt][cdn]
+		if(row.status == 'Do Not Disturb'){
+			cur_frm.set_value('custom_status_updated',0)
+		}
+		else{
+			cur_frm.set_value('custom_status_updated',1)
 		}
 	}
 })
