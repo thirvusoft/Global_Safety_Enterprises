@@ -10,7 +10,7 @@
  "is_standard": "Yes",
  "json": "{\"filters\":[[\"Quotation\",\"status\",\"=\",\"Lost\",false],[\"Follow-Up\",\"status\",\"=\",\"Do Not Disturb\",false]],\"fields\":[[\"name\",\"Quotation\"],[\"docstatus\",\"Quotation\"],[\"party_name\",\"Quotation\"],[\"customer_name\",\"Quotation\"],[\"transaction_date\",\"Quotation\"],[\"custom_ts_contact_person\",\"Quotation\"],[\"custom_ts_contact_number\",\"Quotation\"],[\"custom_quotation_owner\",\"Quotation\"],[\"competitor\",\"Follow-Up\"],[\"description\",\"Follow-Up\"]],\"order_by\":\"`tabQuotation`.`modified` desc\",\"add_totals_row\":0,\"page_length\":20,\"column_widths\":{\"name\":194,\"party_name\":120,\"customer_name\":120,\"transaction_date\":100,\"custom_ts_contact_person\":180,\"custom_ts_contact_number\":160,\"custom_quotation_owner\":148,\"Follow-Up:competitor\":197,\"Follow-Up:description\":120},\"group_by\":null}",
  "letterhead": null,
- "modified": "2023-12-04 14:01:22.650400",
+ "modified": "2023-12-05 15:14:47.068022",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Lost Quotation Details",
@@ -21,16 +21,13 @@
  "report_type": "Report Builder",
  "roles": [
   {
-   "role": "Sales User"
+   "role": "Thirvu Admin"
   },
   {
-   "role": "Sales Manager"
+   "role": "Thirvu CRM"
   },
   {
-   "role": "Maintenance User"
-  },
-  {
-   "role": "Maintenance Manager"
+   "role": "System Manager"
   }
  ]
 }
