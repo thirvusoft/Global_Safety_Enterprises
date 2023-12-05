@@ -160,7 +160,10 @@ doc_events = {
 	},
 	'Contact':{
 		'validate': "global_safety_enterprises.global_safety_enterprises.utils.py.contact.validate",
-	}
+	},
+    "User": {
+        "validate":"global_safety_enterprises.global_safety_enterprises.utils.py.user.user_permission_create"
+    }
 }
 
 # Scheduled Tasks

@@ -142,7 +142,7 @@ def get_data(filters):
 			{follow_condition}
 		''', as_dict = 1)
 		for i in data1:
-			i['lead_quotation_id'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 23px;" onclick='frappe.set_route("Form", "Quotation", "{i["lead_quotation_id"]}" )'>
+			i['lead_quotation_id'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 23px;" onclick='frappe.set_route("Form", "Lead", "{i["lead_quotation_id"]}" )'>
 				{i["lead_quotation_id"]}
 				</button>'''
 		
@@ -184,7 +184,7 @@ def get_data(filters):
 			{follow_condition}
 		''', as_dict = 1)
 		for i in data2:
-			i['lead_quotation_id'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 23px;" onclick='frappe.set_route("Form", "Quotation", {i["lead_quotation_id"]} )'>
+			i['lead_quotation_id'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 23px;" onclick='frappe.set_route("Form", "Quotation", "{i["lead_quotation_id"]}" )'>
 				{i["lead_quotation_id"]}
 				</button>'''
 	data=data1+data2
