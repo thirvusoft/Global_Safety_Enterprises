@@ -86,7 +86,7 @@ def get_data(filters):
 	data=[]
 	if (filters.get('lead')):
 		follow_up_filter = {}
-		lead_filter = {'status':['not in', ['Do Not Contact']]}
+		lead_filter = {'status':['not in', ['Do Not Contact', 'Quotation Created']]}
 		if(filters.get('date')):
 			follow_up_filter['next_follow_up_date'] = filters.get('date')
 		if (filters.get('user')):
