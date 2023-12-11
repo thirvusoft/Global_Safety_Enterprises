@@ -158,9 +158,9 @@ doc_events = {
         'validate': "global_safety_enterprises.global_safety_enterprises.utils.py.item.validate",
         'after_insert': "global_safety_enterprises.global_safety_enterprises.utils.py.item.after_insert"
 	},
-	# 'Contact':{
-	# 	'validate': "global_safety_enterprises.global_safety_enterprises.utils.py.contact.validate",
-	# },
+	'Contact':{
+		'validate': "global_safety_enterprises.global_safety_enterprises.utils.py.contact.validate",
+	},
     "User": {
         "validate":"global_safety_enterprises.global_safety_enterprises.utils.py.user.user_permission_create"
     }
