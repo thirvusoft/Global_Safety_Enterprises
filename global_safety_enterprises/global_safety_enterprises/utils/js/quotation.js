@@ -139,6 +139,7 @@ frappe.ui.form.on("Quotation Item", {
 
 		if (data.custom_ts_margin >= 0){
 
+			frappe.model.set_value(cdt, cdn, "discount_amount", 0)
 			frappe.model.set_value(cdt, cdn, "margin_type", "Percentage")
 			frappe.model.set_value(cdt, cdn, "margin_rate_or_amount", data.custom_ts_margin)
 		}

@@ -25,21 +25,17 @@ frappe.ui.form.on("Lead", {
 			};
 		});
 
-		var opp_value = await frappe.db.get_list("Opportunity",
-			{
-				filters:{party_name: cur_frm.doc.name}
-			}
-		)
+		if (!frm.doc.__islocal){
+		
+			frm.add_custom_button(__('<p style="color: #171717; padding-top:8px;padding-left:10px;padding-right:10px;"><b>Create Opportunity</b></p>'), () => {
 
-	{
-		frm.add_custom_button(__('<p style="color: #171717; padding-top:8px;padding-left:10px;padding-right:10px;"><b>Create Opportunity</b></p>'), () => {
-
-			frappe.model.open_mapped_doc({
-				method: "erpnext.crm.doctype.lead.lead.make_opportunity",
-				frm: frm
+				frappe.model.open_mapped_doc({
+					method: "erpnext.crm.doctype.lead.lead.make_opportunity",
+					frm: frm
+				});
+				
 			});
 			
-		});
 		if(!['Open','Replied'].includes(frm.doc.status)){
 			frm.add_custom_button(__('<b style="color:#fc6126">Reopen Lead</b>'), () => {
 				frm.set_value('custom_reopen',1)

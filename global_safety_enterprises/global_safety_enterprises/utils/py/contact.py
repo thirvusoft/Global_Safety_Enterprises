@@ -7,6 +7,10 @@ def validate(self,event):
     validate_unique(self)
 
 def validate_unique(self):
+    if not self.get('__islocal'):
+        cond = f" and contact.name != '{self.name}' "
+    else:
+        cond = ''
     for num in self.phone_nos:
         no = frappe.db.sql(f'''
             SELECT ph.phone, GROUP_CONCAT(r.link_name) AS reference_docs
@@ -14,7 +18,7 @@ def validate_unique(self):
             JOIN `tabDynamic Link` as r ON contact.name = r.parent
             Join `tabContact Phone` as ph on ph.parent = contact.name
             WHERE ph.phone = '{num.phone}' and r.link_doctype = 'Lead'
-
+            {cond}
             GROUP BY ph.phone
             ''',as_dict=1)
         if no:
