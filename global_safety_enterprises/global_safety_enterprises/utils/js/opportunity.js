@@ -24,7 +24,7 @@ frappe.ui.form.on("Opportunity", {
 			};
 		});
 
-		var opp_value = await frappe.db.get_list("Customer",{filters:{opportunity_name:cur_frm.doc.name}})
+		var opp_value = await frappe.db.get_list("Customer",{filters:{lead_name:cur_frm.doc.party_name}})
 		if (!opp_value.length){
 
 			if (!frm.doc.__islocal){

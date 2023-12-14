@@ -15,7 +15,8 @@
   "status",
   "mode_of_communication",
   "competitor",
-  "description"
+  "description",
+  "closed"
  ],
  "fields": [
   {
@@ -89,12 +90,19 @@
    "fieldtype": "Link",
    "label": " Competitor",
    "options": "Competitor"
+  },
+  {
+   "default": "0",
+   "fieldname": "closed",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Closed"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-12-04 13:59:45.950852",
+ "modified": "2023-12-14 18:23:56.628225",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Follow-Up",
