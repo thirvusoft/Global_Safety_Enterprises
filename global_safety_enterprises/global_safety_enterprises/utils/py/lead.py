@@ -17,9 +17,9 @@ def validate_followup_date(doc):
 
 def validate_replied(doc):
 
-    if doc.status in ["Open", "Replied", 'Do Not Disturb']:
+    if doc.status in ["Open", "Replied", 'Do Not Disturb'] and not doc.custom_reopen:
         
-        if doc.custom_view_follow_up_details_copy:
+        if doc.custom_view_follow_up_details_copy and not doc.custom_view_follow_up_details_copy[-1].__dict__["closed"]:
             doc.status = 'Replied'
 
             if doc.custom_view_follow_up_details_copy[-1].__dict__["status"] == "Do Not Disturb":
@@ -27,7 +27,12 @@ def validate_replied(doc):
         
         else:
             doc.status = 'Open'
-        
+
+    if doc.custom_reopen:
+        doc.custom_reopen = 0
+        for row in doc.custom_view_follow_up_details_copy:
+            row.closed = 1
+
 class CustomLead(Lead):
     def before_insert(self):
         self.contact_doc = None

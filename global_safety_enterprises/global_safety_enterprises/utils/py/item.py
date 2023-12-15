@@ -4,6 +4,14 @@ from frappe.utils import (
     nowdate,
     add_days
 )
+def item_captalize(doc, action=None):
+    doc.autoname()
+    if doc.item_code:
+        doc.item_code=(doc.item_code).upper()
+        doc.name = (doc.name).upper()
+    if doc.item_name:
+        doc.item_name=(doc.item_name).upper()   
+        
 def after_insert(self, event):
 
     create_item_price(self)
