@@ -1,0 +1,93 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:CRM-DIS-{YYYY}-{####}",
+ "creation": "2023-12-21 17:29:49.248141",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "sales_invoice",
+  "created_by",
+  "column_break_cavt",
+  "purchase_order",
+  "sales_invoice_number",
+  "column_break_jrah",
+  "po_number",
+  "lr_file"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Attach",
+   "label": "Sales Invoice (Attach)"
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_cavt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Attach",
+   "label": "Purchase Order (Attach)"
+  },
+  {
+   "fieldname": "sales_invoice_number",
+   "fieldtype": "Link",
+   "label": "Sales Invoice Number",
+   "options": "Sales Invoice"
+  },
+  {
+   "fieldname": "column_break_jrah",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "po_number",
+   "fieldtype": "Link",
+   "label": "PO Number",
+   "options": "Purchase Order"
+  },
+  {
+   "fieldname": "lr_file",
+   "fieldtype": "Attach",
+   "label": "LR File (Attach)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-12-21 17:48:00.873201",
+ "modified_by": "Administrator",
+ "module": "Global Safety Enterprises",
+ "name": "Dispatch Details",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
