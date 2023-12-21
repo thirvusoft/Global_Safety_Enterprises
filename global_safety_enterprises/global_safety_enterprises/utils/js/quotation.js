@@ -28,6 +28,25 @@ frappe.ui.form.on("Quotation", {
 				},
 			};
 		});
+
+		frm.set_query('custom_item_group',function(frm){
+			return {
+				filters:{
+					'is_group':1,
+				}
+			}
+		});
+
+		frm.set_query('item_code',"items", function(doc){
+			if (frm.doc.custom_item_group){
+				return {
+					query:"global_safety_enterprises.global_safety_enterprises.utils.py.quotation.item_query",
+					filters:{
+						'parent_item_group':frm.doc.custom_item_group,
+					}
+				}
+			}
+		})
     },
 
 	custom_margin_: function(frm){
