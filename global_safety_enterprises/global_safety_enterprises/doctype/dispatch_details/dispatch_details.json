@@ -21,6 +21,7 @@
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
+   "in_standard_filter": 1,
    "label": "Date"
   },
   {
@@ -31,6 +32,7 @@
   {
    "fieldname": "created_by",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Created By",
    "options": "User"
   },
@@ -46,6 +48,7 @@
   {
    "fieldname": "sales_invoice_number",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Sales Invoice Number",
    "options": "Sales Invoice"
   },
@@ -56,6 +59,7 @@
   {
    "fieldname": "po_number",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "PO Number",
    "options": "Purchase Order"
   },
@@ -67,7 +71,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-21 17:48:00.873201",
+ "modified": "2023-12-28 16:30:22.082312",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Dispatch Details",

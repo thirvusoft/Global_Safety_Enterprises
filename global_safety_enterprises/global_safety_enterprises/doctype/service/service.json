@@ -19,6 +19,7 @@
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
+   "in_standard_filter": 1,
    "label": "Date"
   },
   {
@@ -33,6 +34,7 @@
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_standard_filter": 1,
    "label": "Status",
    "options": "Open\nCompleted\nClosed"
   },
@@ -45,6 +47,7 @@
   {
    "fieldname": "customer",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Customer",
    "options": "Customer"
   },
@@ -56,7 +59,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-21 17:55:46.741036",
+ "modified": "2023-12-28 16:29:18.525007",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Service",
