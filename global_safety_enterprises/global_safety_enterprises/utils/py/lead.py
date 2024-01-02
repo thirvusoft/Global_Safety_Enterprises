@@ -8,6 +8,14 @@ def validate(doc,event):
     validate_replied(doc)
     validate_followup_date(doc)
     validate_phone_number(doc.mobile_no)
+    
+def on_update(self, event):
+        
+    for row in reversed(self.custom_view_follow_up_details_copy):
+        
+        if not row.longitude or not row.latitude:
+                    
+            frappe.publish_realtime("ts_get_user_current_location", row.name)
 
 def validate_followup_date(doc):
     for date in doc.custom_view_follow_up_details_copy:
@@ -146,3 +154,9 @@ def validate_phone_number(phone_number, throw=True):
 		)
 
 	return bool(match)
+
+@frappe.whitelist()
+def update_current_location(lat, long, name):
+    
+    frappe.db.set_value("Follow-Up", name, "longitude", long)
+    frappe.db.set_value("Follow-Up", name, "latitude", lat)

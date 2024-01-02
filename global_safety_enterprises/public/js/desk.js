@@ -10,6 +10,20 @@ setTimeout(async ()=>{
             }
         )
     })
+
+    frappe.realtime.on("ts_get_user_current_location", async (data)=>{
+        let cur_location = await get_location();
+        
+        frappe.xcall(
+            "global_safety_enterprises.global_safety_enterprises.utils.py.lead.update_current_location", 
+            {
+                lat: cur_location["latitude"], 
+                long: cur_location["longitude"],
+                name: data
+            }
+        )
+    })
+    
     let cur_location = await get_location();
         frappe.xcall(
             "global_safety_enterprises.global_safety_enterprises.utils.py.location.update_current_location", 
@@ -19,7 +33,6 @@ setTimeout(async ()=>{
             }
         )
 }, 1000)
-
 
 async function get_location() {
     check_location_permission()

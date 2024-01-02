@@ -13,8 +13,16 @@ def validate(self,event):
     validate_lost_status(self, event)
     validate_phone_number(self.custom_ts_contact_number)
     
-def on_update(self, event):
+def on_change(self, event):
     update_date_status(self, event)
+    
+def on_update(self, event):
+         
+    for row in reversed(self.custom_followup):
+        
+        if not row.longitude or not row.latitude:
+                    
+            frappe.publish_realtime("ts_get_user_current_location", row.name)
     
 def validate_followup_date(self):
     for date in self.custom_followup:

@@ -144,15 +144,17 @@ doc_events = {
     "Quotation": {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.validate",
 		'on_submit': "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.update_ts_status",
-        "on_change": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_update",
-        "on_update_after_submit": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.validate_lost_status",
+        "on_change": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_change",
+        "on_update_after_submit": ["global_safety_enterprises.global_safety_enterprises.utils.py.quotation.validate_lost_status", "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_update"],
+        "on_update": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_update"
 	},
 	"Address": {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.address.address_tax_validation",
 		'after_insert':"global_safety_enterprises.global_safety_enterprises.utils.py.address.after_save_address"
 	},
 	'Lead':{
-		'validate':"global_safety_enterprises.global_safety_enterprises.utils.py.lead.validate"
+		'validate': "global_safety_enterprises.global_safety_enterprises.utils.py.lead.validate",
+  		'on_update': "global_safety_enterprises.global_safety_enterprises.utils.py.lead.on_update"
 	},
     
 	"Item": {
