@@ -37,7 +37,7 @@ frappe.ui.form.on("Lead", {
 					
 				});
 			}
-			if(['Quotation Created'].includes(frm.doc.status)){
+			if(['Quotation Created', 'Replied', 'Opportunity Open', 'Opportunity Closed', 'Do Not Disturb'].includes(frm.doc.status)){
 				frm.add_custom_button(__('<b style="color:#fc6126">Reopen Lead</b>'), () => {
 					frm.set_value('custom_reopen',1)
 					frm.set_value('status','Open')
