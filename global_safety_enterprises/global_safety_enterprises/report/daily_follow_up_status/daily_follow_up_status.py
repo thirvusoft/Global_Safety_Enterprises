@@ -93,8 +93,8 @@ def get_data(filters):
     if (filters.get('lead')):
         follow_up_filter = {}
         lead_filter = {'status':['not in', ['Do Not Contact']]}
-        if(filters.get('date')):
-            follow_up_filter['date'] = filters.get('date')
+        if(filters.get('from_date')) and (filters.get('to_date')) :
+            follow_up_filter['date'] = ["between", [ filters.get('from_date'), filters.get('to_date')]]
         if (filters.get('user')):
             follow_up_filter['followed_by'] = filters.get('user')
 
@@ -158,8 +158,8 @@ def get_data(filters):
         follow_up_filter = {}
         lead_filter={}
         lead_filter = {'docstatus':['not in', [2]]}
-        if(filters.get('date')):
-            follow_up_filter['date'] = filters.get('date')
+        if(filters.get('from_date')) and (filters.get('to_date')) :
+            follow_up_filter['date'] = ["between", [ filters.get('from_date'), filters.get('to_date')]]
         if (filters.get('user')):
             follow_up_filter['followed_by'] = filters.get('user')
 
