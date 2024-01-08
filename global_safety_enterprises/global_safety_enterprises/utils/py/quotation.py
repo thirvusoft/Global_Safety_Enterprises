@@ -6,13 +6,20 @@ from frappe.desk.reportview import get_filters_cond, get_match_cond
 
 import json
 
+def before_update_after_submit(doc, event=None):
+    _action = doc._action
+    doc._action = 'save'
+    doc.run_before_save_methods()
+    doc._action = _action
+    doc.flags.ignore_validate_update_after_submit = True
+
 def validate(self,event):
     update_status(self)
     validate_followup_date(self)
     update_date_status(self, event)
     validate_lost_status(self, event)
     validate_phone_number(self.custom_ts_contact_number)
-    
+
 def on_change(self, event):
     update_date_status(self, event)
     
