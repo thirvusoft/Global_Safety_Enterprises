@@ -12,10 +12,10 @@ def address_tax_validation(self, event):
         if i.link_doctype == 'Customer':
 
             if self.state != "Tamil Nadu":
-                frappe.set_value("Customer", i.link_name, "tax_category", "Out-State")
+                frappe.db.set_value("Customer", i.link_name, "tax_category", "Out-State")
             
             else:
-                frappe.set_value("Customer", i.link_name, "tax_category", "In-State")
+                frappe.db.set_value("Customer", i.link_name, "tax_category", "In-State")
 
 def after_save_address(self,event):
     frappe.publish_realtime(
