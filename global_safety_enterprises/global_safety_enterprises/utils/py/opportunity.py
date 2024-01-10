@@ -60,7 +60,7 @@ def get_lead_addresses(lead_name):
 
 @frappe.whitelist()
 
-def create_customer(lead_name,customer,type,tax,opportunity_name,group = None):
+def create_customer(lead_name,customer,type,tax,opportunity_name=None,group = None):
     address=frappe.get_all(
             "Address",
             filters=[

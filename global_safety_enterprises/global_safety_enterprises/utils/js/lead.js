@@ -36,6 +36,61 @@ frappe.ui.form.on("Lead", {
 					});
 					
 				});
+				frm.add_custom_button(__('<p style="color: #171717; padding-top:8px;padding-left:10px;padding-right:10px;"><b>Create Customer</b></p>'), () => {
+					var tax_category = ''
+					var readvalue = 0
+					frappe.call({
+						method: "global_safety_enterprises.global_safety_enterprises.utils.py.opportunity.get_lead_addresses",
+						args: {
+							'lead_name': frm.doc.name
+						},
+						callback: function(response) {
+							if (response.message['state']) {
+								if (response.message['state']  == 'Tamil Nadu') {
+									tax_category = 'In-State'
+								}
+								else{
+									tax_category = 'Out-State'
+								}
+							}
+							else{
+								tax_category = 'In-State'
+							}
+							var dialog = new frappe.ui.Dialog({
+								title: __("Create Customer"),
+								fields: [
+									{fieldtype: "Data", fieldname: "customer_name", label: __("Customer Name"), default:cur_frm.doc.lead_name, reqd: 1},
+									{fieldtype: "Select", fieldname: "customer_type", label: __("Customer Type"), options: "Company\nIndividual\nProprietorship\nPartnership", reqd: 1},
+									{fieldtype: "Link", fieldname: "customer_group", label: __("Customer Group"), options: "Customer Group"},
+				
+									{fieldtype: "Link", fieldname: "tax_category", label: __("Tax Category"), default:tax_category,options: "Tax Category", hidden: 1},
+								],
+							});
+							dialog.set_primary_action(__("Save"), function() {
+								let values = dialog.get_values();
+							
+								frappe.call({
+									method: "global_safety_enterprises.global_safety_enterprises.utils.py.opportunity.create_customer",
+									args: {
+										'lead_name': frm.doc.name,
+										'customer':values.customer_name,
+										'type':values.customer_type,
+										'group':values.customer_group,
+										'tax':values.tax_category,
+									},
+									callback:function(r){
+										frappe.show_alert({message: 'Customer Created Successfully', indicator: 'green' });
+										frm.reload_doc()
+									}
+								});
+							
+								dialog.hide();
+							});
+							dialog.show()
+						}
+					});
+				});
+				
 			}
 			if(['Quotation Created', 'Replied', 'Opportunity Open', 'Opportunity Closed', 'Do Not Disturb'].includes(frm.doc.status)){
 				frm.add_custom_button(__('<b style="color:#fc6126">Reopen Lead</b>'), () => {
@@ -190,3 +245,4 @@ frappe.ui.form.on("Follow-Up", {
 		}
 	}
 })
+
