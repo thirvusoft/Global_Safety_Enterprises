@@ -128,9 +128,6 @@ def get_data(filters):
 			i['next_followup_by']=desc[i["name"]][1]
 			i['mode_of_communication']=desc[i["name"]][2]
 
-			i['name'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 24px;" onclick='frappe.set_route("Form", "Lead", "{i["name"]}" )'>
-			{i["name"]}
-			</button>'''
 			contact=frappe.get_all(
 				"Contact",
 					filters=[
@@ -143,6 +140,11 @@ def get_data(filters):
 				)
 			if contact:
 				i['contact_number']=contact[0]['phone']
+    
+			i['name'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 24px;" onclick='frappe.set_route("Form", "Lead", "{i["name"]}" )'>
+			{i["name"]}
+			</button>'''
+   
 		data+=leads
 		
 	if (filters.get('quotation')):
@@ -181,9 +183,6 @@ def get_data(filters):
 			i['next_followup_by']=desc[i["name"]][1]
 			i['mode_of_communication']=desc[i["name"]][2]
 
-			i['name'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 23px;" onclick='frappe.set_route("Form", "Quotation", "{i["name"]}" )'>
-			{i["name"]}
-			</button>'''
 			contact=frappe.get_all(
 				"Contact",
 					filters=[
@@ -197,6 +196,11 @@ def get_data(filters):
 				)
 			if contact:
 				i['contact_number']=contact[0]['phone']
+
+			i['name'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 23px;" onclick='frappe.set_route("Form", "Quotation", "{i["name"]}" )'>
+			{i["name"]}
+			</button>'''
+   
 		data+=leads
 
 	return data

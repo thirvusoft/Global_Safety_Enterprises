@@ -127,8 +127,6 @@ def get_data(filters):
             long = desc[i["name"]][2]
             lat = desc[i["name"]][3]
             
-            i["name"] = f'''<button style="font-size: 13px; background-color: #000000; color: #ffffff; border-radius: 5px; height: 24px;" onclick="frappe.set_route('Form', 'Lead', '{i["name"]}')">{i["name"]}</button>'''
-            
             if long and lat:
                 i['map'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 24px;" onclick='window.open(`https://www.google.com/maps/search/?api=1&query={lat},{long}`)'>
                 View Map
@@ -152,6 +150,9 @@ def get_data(filters):
                 )
             if contact:
                 i['contact_number']=contact[0]['phone']
+                
+            i["name"] = f'''<button style="font-size: 13px; background-color: #000000; color: #ffffff; border-radius: 5px; height: 24px;" onclick="frappe.set_route('Form', 'Lead', '{i["name"]}')">{i["name"]}</button>'''
+        
         data+=leads
         
     if (filters.get('quotation')):
@@ -192,10 +193,6 @@ def get_data(filters):
             long = desc[i["name"]][2]
             lat = desc[i["name"]][3]
             
-            i['name'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 23px;" onclick='frappe.set_route("Form", "Quotation", "{i["name"]}" )'>
-            {i["name"]}
-            </button>'''
-            
             if long and lat:
                     i['map'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 24px;" onclick='window.open(`https://www.google.com/maps/search/?api=1&query={lat},{long}`)'>
                     View Map
@@ -219,6 +216,11 @@ def get_data(filters):
                 )
             if contact:
                 i['contact_number']=contact[0]['phone']
+                
+            i['name'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 23px;" onclick='frappe.set_route("Form", "Quotation", "{i["name"]}" )'>
+            {i["name"]}
+            </button>'''
+            
         data+=leads
     
     return data
