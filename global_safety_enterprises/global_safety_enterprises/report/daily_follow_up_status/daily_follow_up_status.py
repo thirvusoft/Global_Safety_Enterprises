@@ -21,11 +21,18 @@ def get_columns(filters):
             'label': 'Lead / Quotation ID',
             'width': 195
         },
+        
+        {
+            'fieldname': 'date',
+            'fieldtype': 'Date',
+            'label': 'Date',
+            'width': 120
+        },
 
         {
             'fieldname': 'lead_name',
             'fieldtype': 'Data',
-            'label': 'Lead / Quotation Name',
+            'label': 'Lead / Customer Name',
             'width': 195
         },
 
@@ -34,6 +41,13 @@ def get_columns(filters):
             'fieldtype': 'Data',
             'label': 'Lead / Quotation Owner',
             'width': 195
+        },
+        
+        {
+            'fieldname': 'organization_name',
+            'fieldtype': 'Data',
+            'label': 'Organization Name',
+            'width': 200
         },
 
         # {
@@ -98,7 +112,7 @@ def get_data(filters):
         if (filters.get('user')):
             follow_up_filter['followed_by'] = filters.get('user')
 
-        all_leads = frappe.db.get_all('Follow-Up', filters=follow_up_filter, fields=['idx', 'parent','followed_by','description', "longitude", "latitude"])
+        all_leads = frappe.db.get_all('Follow-Up', filters=follow_up_filter, fields=['idx', 'parent','followed_by','description', "longitude", "latitude", "date"])
         all_leads1=[]
         for i in all_leads:
             follow_up_filter['parent'] = i['parent']
@@ -110,19 +124,19 @@ def get_data(filters):
                     all_leads1.append(i)
                 elif(filters.get("user") and i.get("followed_by")==filters.get("user")):
                     all_leads1.append(i)
-        desc={i['parent']:[i['description'],i.get("followed_by")  or "",i.get("longitude"),i.get("latitude")] for i in all_leads1}
-
+        desc={i['parent']:[i['description'],i.get("followed_by")  or "",i.get("longitude"),i.get("latitude"), i.get('date')] for i in all_leads1}
 
         leads = [i['parent'] for i in all_leads1]
         site_lead=leads
         lead_filter['name'] = ['in', site_lead]
 
-        leads = frappe.db.get_all('Lead', filters=lead_filter, fields=['name', 'lead_name', 'lead_owner','status', 'custom_remarks as remarks'])
+        leads = frappe.db.get_all('Lead', filters=lead_filter, fields=['name', 'lead_name', 'lead_owner','status', 'custom_remarks as remarks', 'company_name as organization_name'])
 
         for i in leads:
             i["for_number_card"] = 1
             i['description']=desc[i["name"]][0]
             i['next_followup_by']=desc[i["name"]][1]
+            i['date'] = desc[i["name"]][4]
             
             long = desc[i["name"]][2]
             lat = desc[i["name"]][3]
@@ -152,6 +166,8 @@ def get_data(filters):
                 i['contact_number']=contact[0]['phone']
                 
             i["name"] = f'''<button style="font-size: 13px; background-color: #000000; color: #ffffff; border-radius: 5px; height: 24px;" onclick="frappe.set_route('Form', 'Lead', '{i["name"]}')">{i["name"]}</button>'''
+            
+            i['lead_owner'] = frappe.get_value("User", {"name": i['lead_owner']}, "username")
         
         data+=leads
         
@@ -164,7 +180,7 @@ def get_data(filters):
         if (filters.get('user')):
             follow_up_filter['followed_by'] = filters.get('user')
 
-        all_leads = frappe.db.get_all('Follow-Up', filters=follow_up_filter, fields=['idx', 'parent','followed_by','description', "longitude", "latitude"])
+        all_leads = frappe.db.get_all('Follow-Up', filters=follow_up_filter, fields=['idx', 'parent','followed_by','description', "longitude", "latitude", "date"])
         all_leads1=[]
         for i in all_leads:
             follow_up_filter['parent'] = i['parent']
@@ -176,7 +192,7 @@ def get_data(filters):
                     all_leads1.append(i)
                 elif(filters.get("user") and i.get("followed_by")==filters.get("user")):
                     all_leads1.append(i)
-        desc={i['parent']:[i['description'],i.get("followed_by") or "",i.get("longitude"),i.get("latitude")] for i in all_leads1}
+        desc={i['parent']:[i['description'],i.get("followed_by") or "",i.get("longitude"),i.get("latitude"), i.get('date')] for i in all_leads1}
 
 
         leads = [i['parent'] for i in all_leads1]
@@ -189,6 +205,7 @@ def get_data(filters):
             i["for_number_card"] = 1
             i['description']=desc[i["name"]][0]
             i['next_followup_by']=desc[i["name"]][1]
+            i['date'] = desc[i["name"]][4]
             
             long = desc[i["name"]][2]
             lat = desc[i["name"]][3]
@@ -220,6 +237,8 @@ def get_data(filters):
             i['name'] = f'''<button style=" font-size: 13px;  background-color: #000000;color: #ffffff;border-radius: 5px; height: 23px;" onclick='frappe.set_route("Form", "Quotation", "{i["name"]}" )'>
             {i["name"]}
             </button>'''
+            
+            i['lead_owner'] = frappe.get_value("User", {"name": i['lead_owner']}, "username")
             
         data+=leads
     
