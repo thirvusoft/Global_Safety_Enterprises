@@ -194,6 +194,10 @@ scheduler_events = {
 #	"monthly": [
 #		"global_safety_enterprises.tasks.monthly"
 #	],
+	"cron":
+     	{
+   			'0 1 * * *': "global_safety_enterprises.global_safety_enterprises.utils.py.whatsapp.send_msg_whatsapp"
+        }
 }
 
 # Testing
