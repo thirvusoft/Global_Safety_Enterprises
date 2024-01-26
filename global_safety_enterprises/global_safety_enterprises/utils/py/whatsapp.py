@@ -49,7 +49,7 @@ def send_msg_whatsapp():
     
     daily_follow_quotation_count = len(daily_follow_up_get_data(filters))
     
-    phone_number_list = ["9488538080", "9840655558"]
+    phone_number_list = ["9488538080"]
     date = get_datetime(str(getdate(add_days(nowdate(), -1)))).strftime('%d-%m-%Y')
     msg = f"*About Follow-Ups Status For {date}:*%0A%0A"
     
@@ -100,11 +100,11 @@ def send_msg_whatsapp():
                         }
                     data_file = get_report_content(filters,report_name)
                     
-                    pdf_name = report_name
+                    pdf_name = report_name +"-"+ str(date)
             
                     urls = f'https://{frappe.local.site}{data_file.file_url}'
 
-                    url_message = f"https://cloud.botsender.in/api/send.php?number=91{phone}&type=media&message={report_name}&media_url={urls}&filename={pdf_name}&instance_id=6500184CF31CC&access_token=298800d8ab85541dd846f73083c56be9"
+                    url_message = f"https://cloud.botsender.in/api/send.php?number=91{phone}&type=media&message= &media_url={urls}&filename={pdf_name}&instance_id=6500184CF31CC&access_token=298800d8ab85541dd846f73083c56be9"
                     
                     response = requests.request("GET", url_message, headers = {}, data = {})
                     try:

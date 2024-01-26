@@ -11,7 +11,7 @@
  "idx": 0,
  "is_standard": 1,
  "message": "Quotation {{ doc.name }} was created at {{ doc.creation }}\n\nQuotation Owner: {{ doc.get(\"custom_quotation_owner\") }}\n\nAmount: {{ doc.rounded_total }}",
- "modified": "2024-01-26 12:37:55.264757",
+ "modified": "2024-01-26 18:02:41.185024",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Quotation Created",
@@ -19,6 +19,6 @@
  "recipients": [],
  "send_system_notification": 1,
  "send_to_all_assignees": 0,
- "slack_webhook_url": "Slack",
+ "slack_webhook_url": "Slack Notification",
  "subject": "Quotation Created"
 }
