@@ -1,10 +1,59 @@
+from global_safety_enterprises.global_safety_enterprises.utils.py.follow_up_notification import follow_up_notification
 import frappe
 from erpnext.selling.doctype.quotation.quotation import Quotation
 from frappe.utils import getdate, nowdate
 from global_safety_enterprises.global_safety_enterprises.utils.py.lead import validate_phone_number
 from frappe.desk.reportview import get_filters_cond, get_match_cond
+from frappe.integrations.doctype.slack_webhook_url.slack_webhook_url import send_slack_message
+from frappe.utils import get_url_to_form
 
 import json
+
+def set_expired_status_global(): # overriding scheduler method
+    # filter out submitted non expired quotations whose validity has been ended
+    cond = f"`tabQuotation`.docstatus = 1 and `tabQuotation`.status NOT IN ('Expired', 'Lost') and `tabQuotation`.valid_till < '{nowdate()}'"
+    # check if those QUO have SO against it
+    so_against_quo = """
+        SELECT
+            so.name FROM `tabSales Order` so, `tabSales Order Item` so_item
+        WHERE
+            so_item.docstatus = 1 and so.docstatus = 1
+            and so_item.parent = so.name
+            and so_item.prevdoc_docname = `tabQuotation`.name"""
+
+    slack = "Slack - Alert"
+    if not frappe.db.exists("Slack Webhook URL", slack):
+        slack = frappe.db.get_value("Slack Webhook URL", {'name': ['like', '%alert%']}, 'name')
+        if not slack:
+            slack = frappe.db.get_value("Slack Webhook URL", {}, 'name')
+
+    if slack:
+        quotations = frappe.db.sql("""Select `tabQuotation`.name from `tabQuotation` WHERE {cond} and not exists({so_against_quo})""".format(
+                    cond=cond, so_against_quo=so_against_quo
+                ))
+
+        url = get_url_to_form('Quotation', f'''?name=["in", [{', '.join([f'"{i[0]}"' for i in quotations])}]]''')
+        message = f'''Quotations Expired Today: {', '.join([f"<{get_url_to_form('Quotation', i[0])}|{i[0]}>" for i in quotations])}\n\n<{url}|See in website>'''
+
+        send_slack_message(
+            webhook_url=slack,
+            message=message,
+            reference_doctype='Quotation',
+            reference_name=f'''?name=["in", [{', '.join([f'"{i[0]}"' for i in quotations])}]]'''
+        )
+    
+    # if not exists any SO, set status as Expired
+
+    frappe.db.multisql(
+        {
+            "mariadb": """UPDATE `tabQuotation`  SET `tabQuotation`.status = 'Expired' WHERE {cond} and not exists({so_against_quo})""".format(
+                cond=cond, so_against_quo=so_against_quo
+            ),
+            "postgres": """UPDATE `tabQuotation` SET status = 'Expired' FROM `tabSales Order`, `tabSales Order Item` WHERE {cond} and not exists({so_against_quo})""".format(
+                cond=cond, so_against_quo=so_against_quo
+            ),
+        },
+    )
 
 def before_update_after_submit(doc, event=None):
     _action = doc._action
@@ -19,6 +68,7 @@ def validate(self,event):
     update_date_status(self, event)
     validate_lost_status(self, event)
     validate_phone_number(self.custom_ts_contact_number)
+    follow_up_notification(self, event)
 
 def on_change(self, event):
     update_date_status(self, event)

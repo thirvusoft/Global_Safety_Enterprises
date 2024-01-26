@@ -1,3 +1,4 @@
+from global_safety_enterprises.global_safety_enterprises.utils.py.follow_up_notification import follow_up_notification
 import frappe
 from erpnext.crm.doctype.lead.lead import Lead
 from frappe import _
@@ -8,6 +9,7 @@ def validate(doc,event):
     validate_replied(doc)
     validate_followup_date(doc)
     validate_phone_number(doc.mobile_no)
+    follow_up_notification(doc, event)
     
 def on_update(self, event):
         
@@ -156,7 +158,7 @@ def validate_phone_number(phone_number, throw=True):
 	return bool(match)
 
 @frappe.whitelist()
-def update_current_location(lat, long, name):
-    
-    frappe.db.set_value("Follow-Up", name, "longitude", long)
-    frappe.db.set_value("Follow-Up", name, "latitude", lat)
+def update_current_location(lat=None, long=None, name=None):
+    if name:
+        frappe.db.set_value("Follow-Up", name, "longitude", long)
+        frappe.db.set_value("Follow-Up", name, "latitude", lat)
