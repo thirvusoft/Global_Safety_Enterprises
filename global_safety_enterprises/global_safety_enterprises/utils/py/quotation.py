@@ -31,16 +31,16 @@ def set_expired_status_global(): # overriding scheduler method
         quotations = frappe.db.sql("""Select `tabQuotation`.name from `tabQuotation` WHERE {cond} and not exists({so_against_quo})""".format(
                     cond=cond, so_against_quo=so_against_quo
                 ))
+        if quotations:
+            url = get_url_to_form('Quotation', f'''?name=["in", [{', '.join([f'"{i[0]}"' for i in quotations])}]]''')
+            message = f'''Quotations Expired Today: {', '.join([f"<{get_url_to_form('Quotation', i[0])}|{i[0]}>" for i in quotations])}\n\n<{url}|See in website>'''
 
-        url = get_url_to_form('Quotation', f'''?name=["in", [{', '.join([f'"{i[0]}"' for i in quotations])}]]''')
-        message = f'''Quotations Expired Today: {', '.join([f"<{get_url_to_form('Quotation', i[0])}|{i[0]}>" for i in quotations])}\n\n<{url}|See in website>'''
-
-        send_slack_message(
-            webhook_url=slack,
-            message=message,
-            reference_doctype='Quotation',
-            reference_name=f'''?name=["in", [{', '.join([f'"{i[0]}"' for i in quotations])}]]'''
-        )
+            send_slack_message(
+                webhook_url=slack,
+                message=message,
+                reference_doctype='Quotation',
+                reference_name=f'''?name=["in", [{', '.join([f'"{i[0]}"' for i in quotations])}]]'''
+            )
     
     # if not exists any SO, set status as Expired
 

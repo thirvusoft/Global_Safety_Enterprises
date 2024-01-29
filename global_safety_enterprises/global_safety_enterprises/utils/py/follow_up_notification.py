@@ -20,7 +20,7 @@ def follow_up_notification(doc, event=None):
         if not new_rows:
             return
         
-        message = f"New Followup Update - <{get_url_to_form(doc.doctype, doc.name)}|{doc.doctype} {doc.name}>  \n"
+        message = f"""New Followup Update - <{get_url_to_form(doc.doctype, doc.name)}|{doc.doctype} {doc.name} - {doc.get("customer_name" if doc.doctype == 'Quotation' else "lead_name") or ''}>  \n"""
 
         for row in new_rows:
             message += f'''
@@ -35,7 +35,7 @@ def follow_up_notification(doc, event=None):
         send_slack_message(
             webhook_url=slack,
             message=message,
-            reference_doctype='',
-            reference_name=''
+            reference_doctype=doc.doctype,
+            reference_name=doc.name if doc.name else ''
         )
     
