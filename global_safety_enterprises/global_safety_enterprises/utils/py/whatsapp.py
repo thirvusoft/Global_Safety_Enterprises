@@ -62,7 +62,7 @@ def send_msg_whatsapp():
     
     for phone in phone_number_list:
            
-        url_message = f"https://cloud.botsender.in/api/send.php?number=91{phone}&type=text&message={msg}&instance_id=6500184CF31CC&access_token=298800d8ab85541dd846f73083c56be9"
+        url_message = f"https://app.botsender.in/api/send?number=91{phone}&type=text&message={msg}&instance_id=64887CCDE9F8F&access_token=6487f7669437f"
 
         response = requests.request("GET", url_message, headers = {}, data = {})
         try:
@@ -105,7 +105,7 @@ def send_msg_whatsapp():
             
                     urls = f'https://{frappe.local.site}{data_file.file_url}'
 
-                    url_message = f"https://cloud.botsender.in/api/send.php?number=91{phone}&type=media&message= &media_url={urls}&filename={pdf_name}&instance_id=6500184CF31CC&access_token=298800d8ab85541dd846f73083c56be9"
+                    url_message = f"https://app.botsender.in/api/send?number=91{phone}&type=media&message= &media_url={urls}&filename={pdf_name}&instance_id=64887CCDE9F8F&access_token=6487f7669437f"
                     
                     response = requests.request("GET", url_message, headers = {}, data = {})
                     
