@@ -123,6 +123,9 @@ def update_date_status(self, event):
         self.custom_ts_lost_date = nowdate()
         self.db_update()
 
+def on_cancel(self, event):
+    frappe.db.set_value("Quotation", self.name, "status", "Cancelled")
+    
 class CustomQuotation(Quotation):
     def on_cancel(self):
         if self.lost_reasons:

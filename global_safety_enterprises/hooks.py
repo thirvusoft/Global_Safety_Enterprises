@@ -150,7 +150,8 @@ doc_events = {
 		'on_submit': "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.update_ts_status",
         "on_change": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_change",
         "on_update_after_submit": ["global_safety_enterprises.global_safety_enterprises.utils.py.quotation.validate_lost_status", "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_update"],
-        "on_update": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_update"
+        "on_update": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_update",
+        "on_cancel": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_cancel"
 	},
 	"Address": {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.address.address_tax_validation",
