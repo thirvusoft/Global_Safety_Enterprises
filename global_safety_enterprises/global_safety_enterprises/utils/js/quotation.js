@@ -1,6 +1,13 @@
 frappe.ui.form.on("Quotation", {
 
     refresh: function(frm){
+		frappe.db.get_value('User', {'name': frappe.session.user}, 'role_profile_name', (r) => {
+			if (r.role_profile_name == 'Admin') {
+			 cur_frm.fields_dict.items.grid.update_docfield_property('rate','read_only',1)
+			} else {
+			 cur_frm.fields_dict.items.grid.update_docfield_property('rate','read_only',0)
+			}
+		   });
 		if(['Ordered','Lost'].includes(frm.doc.status)){
 			frm.set_df_property('custom_followup', 'read_only', 1);
 		}
