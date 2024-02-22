@@ -376,7 +376,7 @@
    "_comments": null,
    "_liked_by": null,
    "_user_tags": null,
-   "creation": "2024-02-21 13:10:46.174103",
+   "creation": "2024-02-22 17:06:54.128871",
    "default_value": null,
    "doc_type": "Quotation Item",
    "docstatus": 0,
@@ -384,7 +384,7 @@
    "field_name": "rate",
    "idx": 0,
    "is_system_generated": 0,
-   "modified": "2024-02-21 13:10:46.174103",
+   "modified": "2024-02-22 17:06:54.128871",
    "modified_by": "Administrator",
    "module": null,
    "name": "Quotation Item-rate-permlevel",
@@ -392,7 +392,7 @@
    "property": "permlevel",
    "property_type": "Int",
    "row_name": null,
-   "value": "2"
+   "value": "0"
   },
   {
    "_assign": null,
