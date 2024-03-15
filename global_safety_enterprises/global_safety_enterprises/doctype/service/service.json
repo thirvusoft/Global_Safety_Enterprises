@@ -9,6 +9,7 @@
   "date",
   "project",
   "customer",
+  "customer_name",
   "column_break_jxrb",
   "status",
   "address",
@@ -55,11 +56,20 @@
    "fieldname": "description",
    "fieldtype": "Long Text",
    "label": "Description"
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fetch_if_empty": 1,
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-12-28 16:29:18.525007",
+ "modified": "2024-03-13 13:21:23.526852",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Service",

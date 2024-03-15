@@ -91,7 +91,7 @@ def update_status(self):
     if self.valid_till >= nowdate() and self.status == 'Expired':
         self.status = self.custom_ts_status
 
-    if self.valid_till < nowdate() and self.status != 'Expired':
+    if self.valid_till < nowdate() and self.status != 'Expired' and self.status == 'Open':
         self.status = 'Expired'
         
     if self.party_name and self.quotation_to == 'Customer':
