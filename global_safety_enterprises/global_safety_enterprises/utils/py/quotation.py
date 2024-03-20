@@ -11,7 +11,7 @@ import json
 
 def set_expired_status_global(): # overriding scheduler method
     # filter out submitted non expired quotations whose validity has been ended
-    cond = f"`tabQuotation`.docstatus = 1 and `tabQuotation`.status NOT IN ('Expired', 'Lost') and `tabQuotation`.valid_till < '{nowdate()}'"
+    cond = f"`tabQuotation`.docstatus = 1 and tabQuotation`.custom_ts_status = 'Open' and `tabQuotation`.status NOT IN ('Expired', 'Lost') and `tabQuotation`.valid_till < '{nowdate()}'"
     # check if those QUO have SO against it
     so_against_quo = """
         SELECT
