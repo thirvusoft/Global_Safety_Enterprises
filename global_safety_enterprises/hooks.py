@@ -173,7 +173,10 @@ doc_events = {
 	},
     "User": {
         "validate":"global_safety_enterprises.global_safety_enterprises.utils.py.user.user_permission_create"
-    }
+    },
+    "ToDo":{
+		"validate":"global_safety_enterprises.global_safety_enterprises.utils.py.todo.validate"
+	}
 }
 
 # Scheduled Tasks
