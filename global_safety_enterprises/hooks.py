@@ -12,7 +12,7 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/global_safety_enterprises/css/global_safety_enterprises.css"
 app_include_js = [
-	"assets/global_safety_enterprises/js/desk.js",
+	# "assets/global_safety_enterprises/js/desk.js",
     "assets/global_safety_enterprises/js/perm.js"
 ]
 
@@ -74,7 +74,6 @@ doctype_list_js = {"Opportunity" : "/global_safety_enterprises/utils/js/opportun
 jinja = {
     "methods" : [
       "frappe.utils.data.money_in_words",
-	  "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.tax_details"
     ]
 }
 
@@ -146,12 +145,12 @@ doc_events = {
 	},
     "Quotation": {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.validate",
-        "before_update_after_submit": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.before_update_after_submit",
-		'on_submit': "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.update_ts_status",
-        "on_change": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_change",
-        "on_update_after_submit": ["global_safety_enterprises.global_safety_enterprises.utils.py.quotation.validate_lost_status", "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_update"],
-        "on_update": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_update",
-        "on_cancel": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_cancel"
+        # "before_update_after_submit": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.before_update_after_submit",
+		# 'on_submit': "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.update_ts_status",
+        # "on_change": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_change",
+        # "on_update_after_submit": ["global_safety_enterprises.global_safety_enterprises.utils.py.quotation.validate_lost_status", "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_update"],
+        # "on_update": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_update",
+        # "on_cancel": "global_safety_enterprises.global_safety_enterprises.utils.py.quotation.on_cancel"
 	},
 	"Address": {
 		"validate": "global_safety_enterprises.global_safety_enterprises.utils.py.address.address_tax_validation",

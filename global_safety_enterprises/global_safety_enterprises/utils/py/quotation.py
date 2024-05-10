@@ -63,12 +63,12 @@ def before_update_after_submit(doc, event=None):
     doc.flags.ignore_validate_update_after_submit = True
 
 def validate(self,event):
-    update_status(self)
+    # update_status(self)
     validate_followup_date(self)
-    update_date_status(self, event)
-    validate_lost_status(self, event)
-    validate_phone_number(self.custom_ts_contact_number)
-    follow_up_notification(self, event)
+    # update_date_status(self, event)
+    # validate_lost_status(self, event)
+    # validate_phone_number(self.custom_ts_contact_number)
+    # follow_up_notification(self, event)
 
 def on_change(self, event):
     update_date_status(self, event)
@@ -170,7 +170,7 @@ class CustomQuotation(Quotation):
             # frappe.get_doc("Lead", self.party_name).set_status(update=True)
 
 def tax_details(doc):
-
+    
     sgst_list = []
     cgst_list = []
     igst_list = []

@@ -1,24 +1,24 @@
 frappe.ui.form.on("Quotation", {
 
     refresh: function(frm){
-		frappe.db.get_value('User', {'name': frappe.session.user}, 'role_profile_name', (r) => {
-			if (r.role_profile_name == 'Admin') {
-			 cur_frm.fields_dict.items.grid.update_docfield_property('rate','read_only',1)
-			} else {
-			 cur_frm.fields_dict.items.grid.update_docfield_property('rate','read_only',0)
-			}
-		   });
-		if(['Ordered','Lost'].includes(frm.doc.status)){
-			frm.set_df_property('custom_followup', 'read_only', 1);
-		}
-		else{
-			frm.set_df_property('custom_followup', 'read_only',0);
-		}
-		setTimeout(() => {
-			frm.remove_custom_button("Set as Lost");
-			frm.remove_custom_button('Sales Order',"Create");
-			frm.remove_custom_button("Opportunity", "Get Items From");
-		}, 100)
+		// frappe.db.get_value('User', {'name': frappe.session.user}, 'role_profile_name', (r) => {
+		// 	if (r.role_profile_name == 'Admin') {
+		// 	 cur_frm.fields_dict.items.grid.update_docfield_property('rate','read_only',1)
+		// 	} else {
+		// 	 cur_frm.fields_dict.items.grid.update_docfield_property('rate','read_only',0)
+		// 	}
+		//    });
+		// if(['Ordered','Lost'].includes(frm.doc.status)){
+		// 	frm.set_df_property('custom_followup', 'read_only', 1);
+		// }
+		// else{
+		// 	frm.set_df_property('custom_followup', 'read_only',0);
+		// }
+		// setTimeout(() => {
+		// 	frm.remove_custom_button("Set as Lost");
+		// 	frm.remove_custom_button('Sales Order',"Create");
+		// 	frm.remove_custom_button("Opportunity", "Get Items From");
+		// }, 100)
 
 		frm.set_query("custom_quotation_owner", function () {
 			return {
@@ -56,28 +56,28 @@ frappe.ui.form.on("Quotation", {
 		// })
     },
 
-	custom_margin_: function(frm){
+	// custom_margin_: function(frm){
 
-		if (frm.doc.custom_margin_ >= 0){
+	// 	if (frm.doc.custom_margin_ >= 0){
 
-			for (var i = 0; i < (frm.doc.items).length; i++){
+	// 		for (var i = 0; i < (frm.doc.items).length; i++){
 
-				frappe.model.set_value(frm.doc.items[i].doctype, frm.doc.items[i].name, "custom_ts_margin", frm.doc.custom_margin_)
+	// 			frappe.model.set_value(frm.doc.items[i].doctype, frm.doc.items[i].name, "custom_ts_margin", frm.doc.custom_margin_)
 
-			}
-		}
-		else{
+	// 		}
+	// 	}
+	// 	else{
 
-			frm.set_value("custom_margin_", 0)
+	// 		frm.set_value("custom_margin_", 0)
 
-			frappe.show_alert({message: "Margin (%) Must Be Postive Number.", indicator: 'red'});
-		}
-	},
-	custom_ts_status:function(frm){
-		cur_frm.set_value('status',frm.doc.custom_ts_status)
-		cur_frm.set_value('custom_status_updated',1)
+	// 		frappe.show_alert({message: "Margin (%) Must Be Postive Number.", indicator: 'red'});
+	// 	}
+	// },
+	// custom_ts_status:function(frm){
+	// 	cur_frm.set_value('status',frm.doc.custom_ts_status)
+	// 	cur_frm.set_value('custom_status_updated',1)
 		
-	},
+	// },
 	custom_view_follow_up_details: function(frm){
 		let data=`<table style="font-size:14px; border:1px solid black;width:100%">
 
@@ -157,49 +157,49 @@ frappe.ui.form.on("Quotation", {
 	}
 })
 
-frappe.ui.form.on("Quotation Item", {
+// frappe.ui.form.on("Quotation Item", {
 
-	custom_ts_margin: function(frm, cdt, cdn){
+// 	custom_ts_margin: function(frm, cdt, cdn){
 
-		var data = locals[cdt][cdn]
+// 		var data = locals[cdt][cdn]
 
-		if (data.custom_ts_margin >= 0){
+// 		if (data.custom_ts_margin >= 0){
 
-			frappe.model.set_value(cdt, cdn, "discount_amount", 0)
-			frappe.model.set_value(cdt, cdn, "margin_type", "Percentage")
-			frappe.model.set_value(cdt, cdn, "margin_rate_or_amount", data.custom_ts_margin)
-		}
-		else{
+// 			frappe.model.set_value(cdt, cdn, "discount_amount", 0)
+// 			frappe.model.set_value(cdt, cdn, "margin_type", "Percentage")
+// 			frappe.model.set_value(cdt, cdn, "margin_rate_or_amount", data.custom_ts_margin)
+// 		}
+// 		else{
 
-			frappe.model.set_value(cdt, cdn, "custom_ts_margin", 0)
+// 			frappe.model.set_value(cdt, cdn, "custom_ts_margin", 0)
 
-			frappe.show_alert({message: "Margin (%) Must Be Postive Number, In Row <b>" + data.idx + "</b>.", indicator: 'red'});
-		}
+// 			frappe.show_alert({message: "Margin (%) Must Be Postive Number, In Row <b>" + data.idx + "</b>.", indicator: 'red'});
+// 		}
 
-	},
+// 	},
 
-	item_code: function(frm, cdt, cdn){
+// 	item_code: function(frm, cdt, cdn){
 
-		setTimeout(() => {
+// 		setTimeout(() => {
 
-			frappe.model.set_value(cdt, cdn, "custom_ts_margin", frm.doc.custom_margin_)
+// 			frappe.model.set_value(cdt, cdn, "custom_ts_margin", frm.doc.custom_margin_)
 
-		}, 200);
-	},
+// 		}, 200);
+// 	},
 
-	rate: function(frm, cdt, cdn){
+// 	rate: function(frm, cdt, cdn){
 
-		var data = locals[cdt][cdn]
+// 		var data = locals[cdt][cdn]
 
-		if (data.rate < 0){
+// 		if (data.rate < 0){
 
-			frappe.model.set_value(cdt, cdn, "rate", data.price_list_rate)
+// 			frappe.model.set_value(cdt, cdn, "rate", data.price_list_rate)
 
-			frappe.show_alert({message: "Rate Must Be Postive Number, In Row <b>" + data.idx + "</b>, So Default Purchase Rate Is Set.", indicator: 'red'});
-		}
+// 			frappe.show_alert({message: "Rate Must Be Postive Number, In Row <b>" + data.idx + "</b>, So Default Purchase Rate Is Set.", indicator: 'red'});
+// 		}
 
-	}
-})
+// 	}
+// })
 
 frappe.ui.form.on("Follow-Up", {
 	date:function(frm,cdt,cdn){
