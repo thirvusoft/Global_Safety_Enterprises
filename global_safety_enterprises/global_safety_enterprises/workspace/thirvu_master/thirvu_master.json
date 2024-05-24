@@ -13,7 +13,7 @@
  "is_hidden": 0,
  "label": "Thirvu Master",
  "links": [],
- "modified": "2024-01-04 12:16:26.770907",
+ "modified": "2024-05-24 16:52:34.266179",
  "modified_by": "Administrator",
  "module": "Global Safety Enterprises",
  "name": "Thirvu Master",
@@ -55,7 +55,7 @@
    "role": "System Manager"
   }
  ],
- "sequence_id": 24.0,
+ "sequence_id": 33.0,
  "shortcuts": [
   {
    "color": "Blue",
